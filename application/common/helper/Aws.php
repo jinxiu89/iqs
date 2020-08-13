@@ -42,8 +42,25 @@ class Aws
             ],
             'debug' => $aws_options['debug']
         ];
-        $s3 = new S3Client($options);
-        return $s3;
+        return new S3Client($options);
+    }
+
+    /**
+     * @param string $prefix
+     * @return array|string
+     */
+    public static function lists($prefix){
+        $option=[
+            'Bucket'=>Config::get('app.aws_bucket'),
+            'Prefix'=>$prefix,
+        ];
+        try{
+            $obj=self::createClient()->listObjectsV2((array) $option)->toArray();
+            unset($obj['Contents'][0]);
+            return $obj['Contents'] ;
+        }catch (AwsException $exception){
+            return $exception->getMessage();
+        }
     }
 
     /**
@@ -60,8 +77,8 @@ class Aws
      */
     public static function uploader($source, $key)
     {
-        $client = self::createClient();
-        $uploader = new MultipartUploader($client, $source, [
+//        $client = self::createClient();
+        $uploader = new MultipartUploader(self::createClient(), $source, [
             "bucket" => Config::get('app.aws_bucket'),
             "key" => $key,
         ]);
@@ -70,7 +87,7 @@ class Aws
                 $result = $uploader->upload()->get('Key');
             } catch (MultipartUploadException $exception) {
                 rewind($source);
-                $uploader = new MultipartUploader($client, $source, [
+                $uploader = new MultipartUploader(self::createClient(), $source, [
                     'state' => $exception->getState(),
                 ]);
             }

@@ -30,6 +30,7 @@ Route::group('wavlink', function () {
     Route::get('/files/:id/download/add', 'downloads/add')->parent(['id' => '\d+']);
     Route::get('/files/:id/download/edit', 'downloads/list')->parent(['id' => '\d+']);
     Route::get('/files/download/edit/:id', 'downloads/edit_download')->parent(['id' => '\d+']);
+    Route::get('/drivers/list', 'Driver/index');
 })->prefix('admin/')->ext('html');
 
 
