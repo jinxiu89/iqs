@@ -6,7 +6,7 @@
  * Time: 17:44
  */
 
-namespace app\admin\controller;
+namespace app\admin\Drivers\controller;
 
 
 use app\common\models\Download as DownloadModel;

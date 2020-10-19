@@ -22,8 +22,8 @@ Route::group('wavlink', function () {
     Route::get('/index', 'index/index');
     Route::get('/files/list', 'files/index');
     Route::get('/files/add', 'files/add');
-    Route::get('/category/list', 'category/index');
-    Route::get('/category/add', 'category/add');
+    Route::get('/category/list', 'Drivers.category/index');
+    Route::get('/category/add', 'Drivers.category/add');
     Route::get('/aws/uploader', 'aws/uploader');
     Route::get("/category/edit/:id", 'category/edit')->parent(['id' => '\d+']);
     Route::get('/files/edit/:id', 'files/edit')->parent(['id' => '\d+']);
@@ -31,7 +31,7 @@ Route::group('wavlink', function () {
     Route::get('/files/:id/download/edit', 'downloads/list')->parent(['id' => '\d+']);
     Route::get('/files/download/edit/:id', 'downloads/edit_download')->parent(['id' => '\d+']);
     Route::get('/drivers/list', 'Driver/index');
-})->prefix('admin/')->ext('html');
+})->prefix('admin/');
 
 
 /***
@@ -48,4 +48,4 @@ Route::group('wavlink', function () {
     Route::post('/files/:id/download/add', 'downloads/add');
     Route::post('/files/edit/:id', 'files/edit')->parent(['id' => '\d+']);
     Route::post('/category/edit/:id', 'category/edit')->parent(['id' => '\d+']);
-})->prefix('admin/')->ext('html');
+})->prefix('admin/');

@@ -8,8 +8,13 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-use think\facade\Request;
-use think\facade\Route;
 
-// 生成验证码
-Route::rule('/verify/code$', 'base/Common/verify', 'GET')->name('gen_verify');
+// +----------------------------------------------------------------------
+// | 控制台配置
+// +----------------------------------------------------------------------
+return [
+    'name'      => 'Think Console',
+    'version'   => '0.1',
+    'user'      => null,
+    'auto_path' => env('app_path') . 'command' . DIRECTORY_SEPARATOR,
+];

@@ -6,12 +6,12 @@
  * Time: 15:02
  */
 
-namespace app\admin\controller;
+namespace app\admin\Drivers\controller;
 
 use think\Request;
 use app\common\models\Files as FilesModel;
 use think\Route;
-
+use app\admin\controller\Base;
 /**
  * Class Index
  * @package app\admin\controller

@@ -42,8 +42,7 @@
                 <div class="form-controls col-xs-7 col-xs-offset-3">
                     <input id="captcha" name="captcha" class="input-text size-L" type="text"
                            placeholder="验证码" value="" style="width:100px;">
-                    <img src="{:captcha_src()}" alt="captcha" width="160px" onclick="this.src='{:captcha_src()}'"/><span
-                        style="color: #fff"> 点图刷新</span>
+                    <a href="javascript:void(0);" onclick="genCode(this)"><img src="{:url('gen_verify')}" alt="captcha" width="135px"/></a>
                 </div>
             </div>
             <div class="row clearfix">
@@ -88,6 +87,10 @@
             }
         }, JSON);
     });
+    function genCode(dom) {
+        var d = Math.round(new Date().getTime() / 500);
+        $(dom).find('img').attr("src", '{:url(\'gen_verify\')}'+'?'+ d);
+    }
 </script>
 </body>
 </html>

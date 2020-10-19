@@ -13,7 +13,7 @@ namespace app\admin\controller;
 
 
 use think\facade\Config;
-
+use app\admin\controller\Base;
 /**
  * Class Driver
  * @package app\admin\controller

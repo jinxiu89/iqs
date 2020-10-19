@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "296bd8a1d28e39d56dcd80ce7be249f3",
+    "content-hash": "803015e45c795076bb8d2ee61949a65a",
     "packages": [
         {
             "name": "topthink/framework",
-            "version": "v5.1.36",
+            "version": "v5.1.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "135eee67ce9ee0b07da201f743d7dd88ec431abb"
+                "reference": "df0f92d58c70207c9ce9526fa7743eeff0831328"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/135eee67ce9ee0b07da201f743d7dd88ec431abb",
-                "reference": "135eee67ce9ee0b07da201f743d7dd88ec431abb",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/df0f92d58c70207c9ce9526fa7743eeff0831328",
+                "reference": "df0f92d58c70207c9ce9526fa7743eeff0831328",
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -61,7 +61,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2019-04-28T08:56:58+00:00"
+            "time": "2020-10-09T07:36:44+00:00"
         },
         {
             "name": "topthink/think-installer",
@@ -78,7 +78,7 @@
                 "shasum": "",
                 "mirrors": [
                     {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
                         "preferred": true
                     }
                 ]
@@ -118,7 +118,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.0"
+        "php": ">=5.6.0",
+        "ext-json": "*"
     },
     "platform-dev": []
 }
