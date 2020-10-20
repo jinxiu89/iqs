@@ -15,7 +15,7 @@ use think\Validate;
  * Class files
  * @package app\admin\validate
  */
-class files extends Validate
+class drivers extends Validate
 {
     protected $rule = [
         'title' => 'require|max:25',

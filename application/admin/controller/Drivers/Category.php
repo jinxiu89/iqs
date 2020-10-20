@@ -10,7 +10,7 @@ namespace app\admin\controller\Drivers;
 
 
 use think\Request;
-use app\common\models\Category as CategoryModel;
+use app\common\models\DriverCategory;
 use app\common\helper\Category as CategoryHelper;
 use app\admin\controller\Base;
 
@@ -24,7 +24,7 @@ class Category extends Base
 
     public function index()
     {
-        $data = (new CategoryModel())->getCategory();
+        $data = (new DriverCategory())->getCategory();
         $count = $data->count();
         return $this->fetch('', [
             'data' => $data,
@@ -42,14 +42,14 @@ class Category extends Base
         }
         if (Request()->isPost()) {
             $data = input('post.');
-            return (new CategoryModel())->saveData($data);
+            return (new DriverCategory())->saveData($data);
         }
     }
 
     public function edit($id)
     {
         if (Request()->isGet()) {
-            $data = (new CategoryModel())->getDataById($id);
+            $data = (new DriverCategory())->getDataById($id);
             if ($data) {
                 return $this->fetch('', [
                     'data' => $data,
@@ -61,7 +61,7 @@ class Category extends Base
         }
         if (Request()->isPost()) {
             $data = input('post.');
-            return (new CategoryModel())->saveData($data);
+            return (new DriverCategory())->saveData($data);
         }
     }
 }

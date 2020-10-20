@@ -8,7 +8,7 @@
 
 namespace app\common\models;
 
-use app\admin\validate\files as filesValidate;
+use app\admin\validate\drivers as driverValidate;
 use function PHPSTORM_META\type;
 use think\Collection;
 use think\Exception;
@@ -17,12 +17,12 @@ use think\Exception;
  * Class files
  * @package app\common\models
  */
-class Files extends Base
+class Drivers extends Base
 {
-    protected $table = 'tb_files';
+    protected $table = 'tb_drivers';
     protected $success = "保存成功！";
     protected $failed = "保存失败！";
-    protected $url = '/wavlink/files/list.html';
+    protected $url = '/wavlink/driver/list.html';
 
     /***
      * 创建文件和下载地址的一对多关系
@@ -82,7 +82,7 @@ class Files extends Base
      *
      * @return bool|false|\think\db\Query[]
      */
-    public function getFiles()
+    public function getDrivers()
     {
         try {
             return self::order(['listorder' => 'desc', 'id' => 'asc'])->paginate();
@@ -106,7 +106,7 @@ class Files extends Base
      */
     public function saveData($data)
     {
-        $validate = new filesValidate();
+        $validate = new driverValidate();
         if (isset($data['id'])) {
             if ($validate->check($data)) {
                 try {

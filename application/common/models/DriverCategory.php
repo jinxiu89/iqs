@@ -8,7 +8,7 @@
 
 namespace app\common\models;
 
-use app\admin\validate\category as categoryValidate;
+use app\admin\validate\DriverCategory as categoryValidate;
 use app\common\helper\Category as CategoryHelper;
 use app\common\models\Files as FilesModel;
 use think\Exception;
@@ -18,7 +18,7 @@ use think\Route;
  * Class category
  * @package app\common\models
  */
-class Category extends Base
+class DriverCategory extends Base
 {
     protected $table = "tb_driver_category";
     protected $success = "保存成功！";

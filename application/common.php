@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
-use app\common\models\category as categoryModel;
+use app\common\models\DriverCategory;
 use app\common\models\Files as FilesModel;
 /***
  * 返回错误信息
@@ -33,12 +33,12 @@ function show($status, $message = '', $url = '')
 
 function getCategoryName($id)
 {
-    $category = (new categoryModel())->getCategoryName($id);
+    $category = (new DriverCategory())->getCategoryName($id);
     if($category){
         if($category['parent_id'] == 0){
             return "一级分类";
         }else{
-            $parent=(new categoryModel())->getDataById($category['parent_id']);
+            $parent=(new DriverCategory())->getDataById($category['parent_id']);
             return $parent['name'];
         }
 

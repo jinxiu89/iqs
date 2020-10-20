@@ -17,16 +17,16 @@ use app\common\helper\Aws;
  * Class download
  * @package app\common\models
  */
-class Download extends Base
+class DriversFiles extends Base
 {
-    protected $table = 'tb_download';
+    protected $table = 'tb_driver_files';
     protected $success = "保存成功！";
     protected $failed = "保存失败！";
     protected $url = '/wavlink/files/list.html';
 
     public function file()
     {
-        return $this->belongsTo('Files');
+        return $this->belongsTo('Drivers');
     }
 
     /**

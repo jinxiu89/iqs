@@ -14,7 +14,7 @@ use think\Validate;
  * Class category
  * @package app\admin\validate
  */
-class category extends Validate
+class DriverCategory extends Validate
 {
     protected $rule = [
         "name" => "require|max:25"
