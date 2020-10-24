@@ -8,7 +8,7 @@
 
 namespace app\common\models;
 
-use app\admin\validate\download as downlaodValidate;
+use app\admin\validate\DriverFiles as FileValidate;
 use Aws\Exception\AwsException;
 use think\Exception;
 use app\common\helper\Aws;
@@ -22,7 +22,7 @@ class DriversFiles extends Base
     protected $table = 'tb_driver_files';
     protected $success = "保存成功！";
     protected $failed = "保存失败！";
-    protected $url = '/wavlink/files/list.html';
+    protected $url = '/wavlink/driver/list.html';
 
     public function file()
     {
@@ -36,9 +36,9 @@ class DriversFiles extends Base
      */
     public function saveData($data)
     {
-        $validate = new downlaodValidate();
+        $validate = new FileValidate();
         if (isset($data['id'])) {
-            if ($validate->check($data)) {
+            if ($validate->scene('edit')->check($data)) {
                 try {
                     return self::allowField(true)->save($data, ['id' => $data['id']]) ?
                         show(true, $this->success, $this->url) : show(false, $this->failed, $this->url);
@@ -49,7 +49,7 @@ class DriversFiles extends Base
                 return show(false, $validate->getError(), '');
             }
         } else {
-            if ($validate->check($data)) {
+            if ($validate->scene('add')->check($data)) {
                 return self::allowField(true)->save($data) ?
                     show(true, $this->success, $this->url) : show(false, $this->failed, $this->url);
             } else {

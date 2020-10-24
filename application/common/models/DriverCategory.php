@@ -25,9 +25,9 @@ class DriverCategory extends Base
     protected $failed = "保存失败！";
     protected $url = '/wavlink/category/list.html';
 
-    public function files()
+    public function drivers()
     {
-        return $this->hasMany('Files', 'c_id');
+        return $this->hasMany('Drivers', 'c_id');
     }
 
     public function getCategory()

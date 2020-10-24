@@ -6,13 +6,14 @@
  * Time: 17:44
  */
 
-namespace app\admin\Drivers\controller;
+namespace app\admin\controller\Drivers;
 
 
-use app\common\models\Download as DownloadModel;
+use app\common\models\DriversFiles;
 use think\Request;
 use think\Route;
 use app\common\helper\Aws;
+use app\admin\controller\Base;
 
 /**
  * 编写思路：当前台点击操作按钮时，点击进入--指定操作
@@ -35,12 +36,12 @@ class Downloads extends Base
     {
         if (Request()->isGet()) {
             return $this->fetch('', [
-                'file_id' => $id,
+                'driver_id' => $id,
             ]);
         }
         if (Request()->isPost()) {
             $data = input('post.');
-            return (new DownloadModel())->saveData($data);
+            return (new DriversFiles())->saveData($data);
         }
     }
 
@@ -55,7 +56,7 @@ class Downloads extends Base
             $count = $files->count();
             return $this->fetch('', [
                 'files' => $files,
-                'file_id' => $id,
+                'driver_id' => $id,
                 'count' => $count
             ]);
         }

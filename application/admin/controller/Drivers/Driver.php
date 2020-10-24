@@ -61,7 +61,7 @@ class Driver extends Base
         }
         if(Request()->isPost()){
             $data= input('post.');
-            return (new FilesModel())->saveData($data);
+            return (new DriversModel())->saveData($data);
         }
     }
 }

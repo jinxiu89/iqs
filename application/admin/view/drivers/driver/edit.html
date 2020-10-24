@@ -63,7 +63,7 @@
             postData[this.name] = this.value
         });
         $.ajax({
-            url: "/wavlink/files/edit/{$data.id}.html",
+            url: "/wavlink/driver/edit/{$data.id}.html",
             type: "post",
             data: postData,
             "success": function (result) {

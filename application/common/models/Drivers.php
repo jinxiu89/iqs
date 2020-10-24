@@ -28,9 +28,9 @@ class Drivers extends Base
      * 创建文件和下载地址的一对多关系
      * @return \think\model\relation\HasMany
      */
-    public function downloads()
+    public function files()
     {
-        return $this->hasMany('Download', 'file_id');
+        return $this->hasMany('DriversFiles', 'driver_id');
     }
 
     /***
@@ -85,7 +85,8 @@ class Drivers extends Base
     public function getDrivers()
     {
         try {
-            return self::order(['listorder' => 'desc', 'id' => 'asc'])->paginate();
+
+            return self::with('files')->order(['listorder' => 'desc', 'id' => 'asc'])->paginate();
         } catch (Exception $e) {
             return [];
         }

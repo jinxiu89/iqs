@@ -8,37 +8,16 @@
 {block name="form"}
 <form class="form form-horizontal" id="form-article-add">
     <div class="row clearfix">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属产品：</label>
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>驱动名称：</label>
         <div class="form-controls col-xs-8 col-sm-4">
-            <input type="text" class="input-text" value="{$file_id|getProductName}" disabled>
-            <input type="hidden" value="{$file_id}" name="file_id">
+            <input type="text" class="input-text" value="{$driver_id|getProductName}" disabled>
+            <input type="hidden" value="{$driver_id}" name="driver_id">
         </div>
     </div>
     <div class="row clearfix">
-        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>标题：</label>
+        <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>系统要求：</label>
         <div class="form-controls col-xs-8 col-sm-4">
-            <input type="text" class="input-text" value="" placeholder="" id="title" name="title">
-        </div>
-    </div>
-    <div class="row clearfix">
-        <label class="form-label col-xs-4 col-sm-2">关键词：</label>
-        <div class="form-controls col-xs-8 col-sm-4">
-            <input type="text" class="input-text" value="" placeholder="" id="keywords" name="keywords">
-        </div>
-    </div>
-    <div class="row clearfix">
-        <label class="form-label col-xs-4 col-sm-2">排序：</label>
-        <div class="form-controls col-xs-8 col-sm-1">
-            <input type="text" class="input-text" value="0" placeholder="" id="listorder" name="listorder">
-        </div>
-    </div>
-    <div class="row clearfix">
-        <label class="form-label col-xs-4 col-sm-2">描述：</label>
-        <div class="form-controls col-xs-8 col-sm-9">
-            <textarea name="description" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"
-                      datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！"
-                      onKeyUp="textarealength(this,100)"></textarea>
-            <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            <input type="text" class="input-text" value="" placeholder="" id="requirement" name="requirement">
         </div>
     </div>
     <div class="row cl">
@@ -49,13 +28,7 @@
                 <div id="filePicker">选择文件</div>
                 <button id="btn-star" type="button" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
             </div>
-            <input type="hidden" name="aws_key" value="" id="aws_key">
-        </div>
-    </div>
-    <div class="row clearfix">
-        <label class="form-label col-xs-4 col-sm-2">文件大小：</label>
-        <div class="form-controls col-xs-8 col-sm-2">
-            <input type="text" class="input-text" value="" name="size">
+            <input type="hidden" name="path" value="" id="path">
         </div>
     </div>
     <div class="row clearfix">
@@ -73,13 +46,12 @@
     $(function () {
         var $list = $("#fileList");
         var $btn = $("#btn-star");
-        var state = "pending";
-        uploader;
+        var state = "pending"; uploader;
         var uploader = WebUploader.create({
             auto: false,
             swf: '__LIB__/webuploader/0.1.5/Uploader.swf',
             // 文件接收服务端。
-            server: '/wavlink/aws/uploader.html',
+            server: '/wavlink/image/uploader.html',
             // 选择文件的按钮。可选。
             // 内部根据当前运行是创建，可能是input元素，也可能是flash.
             pick: {
@@ -126,14 +98,14 @@
             if (!$percent.length) {
                 $percent = $('<div class="progress-box"><span class="progress-bar radius"><span class="sr-only" style="width:0%"></span></span></div>').appendTo($li).find('.sr-only');
             }
-            $li.find(".state").text("上传到亚马逊云，请稍后,根据网速快慢，300M的文件大约需要4分钟");
+            $li.find(".state").text("上传中，请稍后,根据网速快慢，300M的文件大约需要4分钟");
             $percent.css('width', percentage * 100 + '%');
         });
 
         // 文件上传成功，给item添加成功class, 用样式标记上传成功。
         uploader.on('uploadSuccess', function (file, result) {
-            $('#' + file.id).addClass('upload-state-success').find(".state").text("已上传到亚马逊s3 files.iqs.link存储桶");
-            $('#aws_key').val(result._raw)
+            $('#' + file.id).addClass('upload-state-success').find(".state").text("已上传");
+            $('#path').val(result._raw)
         });
 
         // 文件上传失败，显示上传出错。
@@ -175,7 +147,7 @@
             postData[this.name] = this.value
         });
         $.ajax({
-            url: "/wavlink/files/{$file_id}/download/add.html",
+            url: "/wavlink/driver/{$driver_id}/download/add.html",
             type: "post",
             data: postData,
             "success": function (result) {

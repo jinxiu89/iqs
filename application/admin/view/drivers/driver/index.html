@@ -43,7 +43,13 @@
                     <td>{$vo.id}</td>
                     <td class="text-l">{$vo.title}</td>
                     <td class="text-l">{$vo.keywords}</td>
-                    <td class="text-l">{$vo.description}</td>
+                    <td class="text-l">
+                        {notempty name="vo.files"}
+                        {volist name="vo.files" id="lo"}
+                        <span>{$lo.requirement}</span>
+                        {/volist}
+                        {/notempty}
+                    </td>
                     <td>{$vo.c_id}</td>
                     <td>{$vo.create_time}</td>
                     <td class="f-14 td-manage">

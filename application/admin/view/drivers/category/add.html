@@ -13,7 +13,7 @@
                         {notempty name="to_level"}
                         <option value="0">根分类</option>
                         {volist name="to_level" id="vo"}
-                        <option value="{$vo.id}">{$vo.delimiter}{$vo.name}</option>
+                        <option value="{$vo.id}">{$vo.delimiter|raw}{$vo.name}</option>
                         {/volist}
                         {else /}
                         <option value="0">根分类</option>

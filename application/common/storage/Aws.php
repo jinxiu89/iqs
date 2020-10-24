@@ -6,7 +6,7 @@
  * Time: 8:47
  */
 
-namespace app\common\helper;
+namespace app\common\storage;
 
 use Aws\Exception\AwsException;
 use Aws\Exception\MultipartUploadException;
@@ -64,7 +64,7 @@ class Aws
     }
 
     /**
-     * @param $source
+     * @param $info
      * 源文件 上传文件 修改时间 20190517
      * 本方法 上传文件到s3 存储桶中
      * 需要两个参数 第一个参数是文件本身
@@ -72,28 +72,33 @@ class Aws
      * 该方法能将文件上传到亚马逊s3,如果成功返回文件在s3中的地址；
      * API参考 连接  MultipartUploader
      * https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html
-     * @param $key
+     *
      * @return mixed|void
      */
-    public static function uploader($source, $key)
+    public static function uploader($info)
     {
-//        $client = self::createClient();
-        $uploader = new MultipartUploader(self::createClient(), $source, [
+        $source=$info['filePath'];
+        $obj = new MultipartUploader(self::createClient(), $source, [
             "bucket" => Config::get('app.aws_bucket'),
-            "key" => $key,
+            "key" => $info['key'],
         ]);
-        do {
-            try {
-                $result = $uploader->upload()->get('Key');
-            } catch (MultipartUploadException $exception) {
-                rewind($source);
-                $uploader = new MultipartUploader(self::createClient(), $source, [
-                    'state' => $exception->getState(),
-                ]);
-            }
-        } while (!isset($result));
-        return $result;
+        try{
+            do {
+                try {
+                    $result = $obj->upload()->get('Key');
+                } catch (MultipartUploadException $exception) {
+                    rewind($source);
+                    $obj = new MultipartUploader(self::createClient(), $source, [
+                        'state' => $exception->getState(),
+                    ]);
+                }
+            } while (!isset($result));
+            return ['path'=>'http://'.Config::get('app.aws_bucket').'/'.$result,'upload_type'=>1];
+        }catch (\Exception $exception){
+            return $exception->getMessage();
+        }
     }
+
 
     /***
      * 根据key 删除 本桶里的数据
