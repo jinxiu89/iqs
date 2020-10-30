@@ -34,7 +34,7 @@ Route::group('wavlink', function () {
     Route::post('/image/uploader', 'Common/ImageUpload');
 
     Route::get('/attachment/list','Attachment/index')->name('attachment_list');
-//    Route::get('/driver/download/edit/:id', 'Drivers.downloads/edit_download')->parent(['id' => '\d+']);
+    Route::get('/attachment/category/add','AttachmentCategory/add');
 
 })->prefix('admin/');
 

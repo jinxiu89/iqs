@@ -34,4 +34,10 @@ class Attachment extends Base
 
         return $this->fetch();
     }
+
+    public function add(){
+        if($this->request->isGet()){
+            return $this->fetch();
+        }
+    }
 }

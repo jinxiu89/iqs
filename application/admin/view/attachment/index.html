@@ -23,6 +23,7 @@
     }
 
     .Huifold .item{ position:relative}
+    .Huifold .item:nth-of-type(1) .info {display: block}
     .Huifold .item h4{margin:0;font-weight:bold;position:relative;border-top: 1px solid #fff;font-size:15px;line-height:22px;padding:7px 10px;background-color:#eee;cursor:pointer;padding-right:30px}
     .Huifold .item h4 b{position:absolute;display: block; cursor:pointer;right:10px;top:7px;width:16px;height:16px; text-align:center; color:#666}
     .Huifold .item .info{display:none;padding:10px}
@@ -263,7 +264,7 @@
             }
         })}
     $(function(){
-        $.Huifold("#Huifold1 .item h4","#Huifold1 .item .info","fast",1,"click"); /*5个参数顺序不可打乱，分别是：响应区,隐藏显示的内容,速度,类型,事件*/
+        $.Huifold("#Huifold1 .item h4","#Huifold1 .item .info","fast",3,"click"); /*5个参数顺序不可打乱，分别是：响应区,隐藏显示的内容,速度,类型,事件*/
     });
 </script>
 {/block}
