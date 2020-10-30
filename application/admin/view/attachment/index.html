@@ -1,0 +1,269 @@
+{extend name="base:base-add" /}
+{block name="style"}
+{/block}
+{block name="title"}
+<title>编辑下载文件地址</title>
+
+<style>
+    .Hui-admin-page-container, .panel, .panel-body {
+        height: 100%;
+    }
+    .panel-header {
+        text-align: center;
+    }
+    .panel-body {
+        display: flex;
+        border: 1px solid #eaeaea;
+    }
+    /* 侧边栏 */
+    .panel-body-aside {
+        float: left;
+        width: 20%;
+        padding-right: 20px;
+    }
+
+    .Huifold .item{ position:relative}
+    .Huifold .item h4{margin:0;font-weight:bold;position:relative;border-top: 1px solid #fff;font-size:15px;line-height:22px;padding:7px 10px;background-color:#eee;cursor:pointer;padding-right:30px}
+    .Huifold .item h4 b{position:absolute;display: block; cursor:pointer;right:10px;top:7px;width:16px;height:16px; text-align:center; color:#666}
+    .Huifold .item .info{display:none;padding:10px}
+
+    /* 主体容器 */
+    .panel-body-main {
+        float: left;
+        width: 80%;
+        padding: 0 20px;
+        border-left: 1px solid #eaeaea;
+
+    }
+    /* 主体内容布局 */
+    .main-box .main-item {
+        float: left;
+        width: 125px;
+        text-align: center;
+        border: 1px solid transparent;
+        margin: 5px;
+        padding: 5px;
+        cursor: pointer;
+    }
+    .main-box .main-item:hover,
+    .main-box .active{
+        border: 1px solid #19968a;
+    }
+    .main-box .main-item .img-box {
+        position: relative;
+        width: 125px;
+        height: 120px;
+    }
+    .main-box .main-item img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 100px;
+        max-height: 120px;
+    }
+    .main-box .main-item p {
+        width: 100%;
+        margin: 5px 0 0;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+    /* 分页 */
+    .panel-body-main .page {
+        margin-top: 20px;
+    }
+    .panel-body-main .page li {
+        float: left;
+    }
+    .panel-body-main .page li a {
+        display: block;
+        padding: 2px 5px;
+        border: 1px solid #eaeaea;
+        border-right: 1px solid transparent;
+    }
+    .panel-body-main .page li:nth-last-of-type(1) a {
+        border-right: 1px solid #eaeaea;
+    }
+</style>
+
+{/block}
+{block name="form"}
+<div class="panel">
+    <div class="panel-header">
+        <button class="btn btn-danger">删除</button>
+        <button class="btn btn-success">上传</button>
+    </div>
+    <div class="panel-body">
+        <div class="panel-body-aside">
+            <ul id="Huifold1" class="Huifold first-menu">
+                {notempty name="tree"}
+                {volist name="tree" id="vo"}
+                <li class="item first-item">
+                    <h4 href="#">{$vo.name} <b>+</b></h4>
+                    <ul class="info second-menu">
+                        {notempty name="vo.child"}
+                        {volist name="vo.child" id="lo"}
+                        <li class="second-item"><a href="//www.baidu.com">{$lo.name}</a></li>
+                        {/volist}
+                        {/notempty}
+                    </ul>
+                </li>
+                {/volist}
+                {/notempty}
+            </ul>
+        </div>
+        <div class="panel-body-main">
+            <div class="main-box clearfix">
+                <div class="main-item active">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/UMD03.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/4.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/Mobile/4.jpg" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/Mobile/1.jpg" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/Scale/1.jpg" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/3.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+                <div class="main-item">
+                    <div class="img-box">
+                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
+                    </div>
+                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                </div>
+            </div>
+
+            <div class="page">
+                <ul class="clearfix">
+                    <li><a href="#"> < </a></li>
+                    <li><a href="#"> 1 </a></li>
+                    <li><a href="#"> 2 </a></li>
+                    <li><a href="#"> 3 </a></li>
+                    <li><a href="#"> > </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    /*管理员-编辑*/
+    function edit(title, url) {
+        var index = layer.open({
+            type: 2,
+            title: title,
+            content: url,
+            area: ['800px', '600px']
+        });
+    }
+
+    function del(obj, id) {
+        layer.confirm('确认要删除吗？,同时aws上的文件也会被删除，不用担心垃圾过多！', function (index) {
+            var postData = {};
+            postData['id'] = id;
+            var url = '/wavlink/files/download/del/' + id + '.html';
+            //ajax 请求删除
+            $.ajax({
+                url: url,
+                type: "post",
+                data: postData,
+                "success": function (result) {
+                    console.log(result);
+                    var msgData = JSON.parse(result);
+                    if (msgData.status === true) {
+                        $(obj).parents("tr").remove();
+                        layer.msg(msgData.message, {icon: 1, time: 1000});
+                    } else {
+                        layer.msg(msgData.message, {icon: 5, time: 2000})
+                    }
+                }
+            }, JSON);
+        });
+    }
+
+    //h-ui侧边栏插件js
+    jQuery.Huifold = function(obj,obj_c,speed,obj_type,Event){
+        if(obj_type == 2){
+            $(obj+":first").find("b").html("-");
+            $(obj_c+":first").show()}
+        $(obj).bind(Event,function(){
+            if($(this).next().is(":visible")){
+                if(obj_type == 2){
+                    return false}
+                else{
+                    $(this).next().slideUp(speed).end().removeClass("selected");
+                    $(this).find("b").html("+")}
+            }
+            else{
+                if(obj_type == 3){
+                    $(this).next().slideDown(speed).end().addClass("selected");
+                    $(this).find("b").html("-")}else{
+                    $(obj_c).slideUp(speed);
+                    $(obj).removeClass("selected");
+                    $(obj).find("b").html("+");
+                    $(this).next().slideDown(speed).end().addClass("selected");
+                    $(this).find("b").html("-")}
+            }
+        })}
+    $(function(){
+        $.Huifold("#Huifold1 .item h4","#Huifold1 .item .info","fast",1,"click"); /*5个参数顺序不可打乱，分别是：响应区,隐藏显示的内容,速度,类型,事件*/
+    });
+</script>
+{/block}
