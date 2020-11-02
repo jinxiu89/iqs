@@ -92,8 +92,14 @@
 {block name="form"}
 <div class="panel">
     <div class="panel-header">
-        <button class="btn btn-danger">删除</button>
-        <button class="btn btn-success">上传</button>
+        <div style="float: left">
+            <a href="javascript:;" onclick="mu_layer('添加分类','{:url(\'attachment_category\')}',window.parent)" class="btn btn-primary" >创建分类</a>
+        </div>
+        <div>
+            <button class="btn btn-success">用用</button>
+            <button class="btn btn-danger">删除</button>
+            <button class="btn btn-primary">上传</button>
+        </div>
     </div>
     <div class="panel-body">
         <div class="panel-body-aside">
@@ -203,7 +209,9 @@
     </div>
 </div>
 {/block}
+
 {block name="script"}
+<script type="text/javascript" src="__ADMIN__/business/js/main.js"></script>
 <script>
     /*管理员-编辑*/
     function edit(title, url) {

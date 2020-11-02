@@ -13,6 +13,8 @@ namespace app\common\models;
 
 use app\common\helper\Category;
 
+//
+
 class AttachmentCategory extends Base
 {
     protected $table = 'tb_attachment_category';
@@ -24,5 +26,16 @@ class AttachmentCategory extends Base
     {
         $data = self::select()->toArray();
         return Category::toLayer($data, 'child', 0);
+    }
+
+    /**
+     * @return array
+     */
+    public function getCategoryLevel(){
+        $data = self::select()->toArray();
+        foreach($data as &$item){
+            unset($item['child']);
+        }
+        return Category::toLevel($data, '&nbsp;&nbsp;', 0);
     }
 }
