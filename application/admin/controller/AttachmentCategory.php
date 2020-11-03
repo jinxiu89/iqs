@@ -59,7 +59,6 @@ class AttachmentCategory extends Base
                 return show(false,$exception->getMessage(),'');
             }
 
-
             return ;
         }
         return show(0,'非法访问');//功能完善后再来修饰

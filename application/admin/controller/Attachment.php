@@ -14,6 +14,7 @@ namespace app\admin\controller;
 
 use think\App;
 use app\common\models\AttachmentCategory;
+use app\common\models\Attachment as AttachmentModel;
 /**
  * Class Attachment
  * @package app\admin\controller
@@ -31,11 +32,28 @@ class Attachment extends Base
      * @return mixed
      */
     public function index(){
-
+        $data=(new AttachmentModel())->getDataPage();
+        $page=$data->render();
+        $this->assign('page',$page);
+        $this->assign('data',$data);
         return $this->fetch();
     }
 
+    /**
+     * @return mixed
+     *
+     */
     public function add(){
+        if($this->request->isGet()){
+            return $this->fetch();
+        }
+    }
+
+    /**
+     * @return mixed
+     * 上传文件接口
+     */
+    public function upload(){
         if($this->request->isGet()){
             return $this->fetch();
         }

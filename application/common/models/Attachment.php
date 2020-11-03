@@ -26,6 +26,7 @@ class Attachment extends Base
 
     /**
      * @param $info array
+     * @return bool|string
      */
     public function add($info)
     {
@@ -35,5 +36,13 @@ class Attachment extends Base
         }catch (Exception $exception){
             return $exception->getMessage();
         }
+    }
+
+    /**
+     * @return Attachment[]|\think\Paginator
+     * @throws \think\exception\DbException
+     */
+    public function getDataPage(){
+        return self::paginate(2);
     }
 }

@@ -45,6 +45,8 @@
         margin: 5px;
         padding: 5px;
         cursor: pointer;
+        font-size: 12px;
+        color: #545454;
     }
     .main-box .main-item:hover,
     .main-box .active{
@@ -93,12 +95,15 @@
 <div class="panel">
     <div class="panel-header">
         <div style="float: left">
-            <a href="javascript:;" onclick="mu_layer('添加分类','{:url(\'attachment_category\')}',window.parent)" class="btn btn-primary" >创建分类</a>
+            <a href="javascript:;" onclick="min_layer('添加分类','{:url(\'attachment_category\')}',window.parent)" class="btn btn-primary" >创建分类</a>
         </div>
         <div>
-            <button class="btn btn-success">用用</button>
-            <button class="btn btn-danger">删除</button>
-            <button class="btn btn-primary">上传</button>
+            <button class="btn btn-success" disabled>用用</button>
+            <button class="btn btn-danger" disabled>删除</button>
+            <!--<form class="form form-horizontal" id="form-article-add">
+
+            </form>-->
+            <a href="javascript:void() ;" class="btn btn-primary" onclick="mu_layer('上传文件','{:url(\'attachment_upload\')}',window.parent)">上传</a>
         </div>
     </div>
     <div class="panel-body">
@@ -122,88 +127,22 @@
         </div>
         <div class="panel-body-main">
             <div class="main-box clearfix">
-                <div class="main-item active">
+                {notempty name="$data"}
+                {volist name="data" id="vo"}
+                <div class="main-item">
                     <div class="img-box">
                         <img src="//files2.wavlink.com/images/Product/English/UMD03/UMD03.png" alt="">
                     </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
+                    <p title="{$vo.name}">{$vo.name}</p>
                 </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/4.png" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/Mobile/4.jpg" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/Mobile/1.jpg" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/Scale/1.jpg" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/3.png" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
-                <div class="main-item">
-                    <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/PC/7.png" alt="">
-                    </div>
-                    <p title="这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称">这是文件名称这是文件名称这是文件名称这是文件名称这是文件名称</p>
-                </div>
+                {/volist}
+                {/notempty}
             </div>
 
             <div class="page">
-                <ul class="clearfix">
-                    <li><a href="#"> < </a></li>
-                    <li><a href="#"> 1 </a></li>
-                    <li><a href="#"> 2 </a></li>
-                    <li><a href="#"> 3 </a></li>
-                    <li><a href="#"> > </a></li>
-                </ul>
+                {notempty name="page"}
+                {$page|raw}
+                {/notempty}
             </div>
         </div>
     </div>
@@ -212,7 +151,9 @@
 
 {block name="script"}
 <script type="text/javascript" src="__ADMIN__/business/js/main.js"></script>
+<script type="text/javascript" src="__LIB__/webuploader/0.1.5/webuploader.js"></script>
 <script>
+
     /*管理员-编辑*/
     function edit(title, url) {
         var index = layer.open({

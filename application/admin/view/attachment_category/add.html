@@ -12,11 +12,14 @@
         <div class="form-controls col-xs-8 col-sm-4">
                 <span class="select-box">
                     <select class="select" size="1" name="parent_id">
-                        {notempty name="category"}
+                        {empty name="category"}
+                        <option value="0">顶级</option>
+                        {else /}
+                         <option value="0">顶级</option>
                         {volist name="category" id="vo"}
                         <option value="{$vo.id}">{$vo.name}</option>
                         {/volist}
-                        {/notempty}
+                        {/empty}
                     </select>
                 </span>
         </div>
@@ -44,6 +47,7 @@
 <script type="text/javascript" src="__ADMIN__/business/js/main.js"></script>
 <script type="text/javascript">
     $(".add").click(function () {
+        $('.btn').attr('disabled', 'disabled')
         var postData = {};
         var data = $("form").serializeArray();
         $.each(data, function () {
@@ -53,16 +57,17 @@
             url: "{:url(\'attachment_category\')}",
             type: "post",
             data: postData,
-            "success": function (result) {
+            success: function (result) {
                 var msgData = JSON.parse(result);
                 if (msgData.status === true) {
                     layer.msg(msgData.message, {icon: 1, time: 1000}, function () {
-                        window.parent.location.href = msgData.url
+                        var index = parent.layer.getFrameIndex(window.name)
+                        parent.layer.close(index);
                     })
                 } else {
                     layer.msg(msgData.message, {icon: 5, time: 2000})
                 }
-            }
+            },
         }, JSON);
     });
 </script>
