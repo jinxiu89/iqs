@@ -33,7 +33,7 @@ Route::group('wavlink', function () {
     Route::get('/driver/:id/download/edit', 'Drivers.downloads/list')->parent(['id' => '\d+']);
     Route::post('/image/uploader', 'Common/ImageUpload');
 
-    Route::get('/attachment/list','Attachment/index')->name('attachment_list');
+    Route::get('/attachment/list','Attachment/index')->parent(['parent_id'=>'\d+'])->name('attachment_list');
     Route::get('/attachment/upload','Attachment/upload')->name('attachment_upload');
     Route::get('/attachment/category/add','AttachmentCategory/add')->name('attachment_category');
     Route::post('/attachment/category/add','AttachmentCategory/add')->name('attachment_category');

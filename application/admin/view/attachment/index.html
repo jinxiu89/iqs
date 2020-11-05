@@ -76,17 +76,49 @@
     .panel-body-main .page {
         margin-top: 20px;
     }
+    .panel-body-main .page ul:before,
+    .panel-body-main .page ul:after {
+        content: "";
+        display: table;
+        zoom: 1;
+    }
+    .panel-body-main .page ul:after {
+        clear: both;
+    }
     .panel-body-main .page li {
         float: left;
     }
+    .panel-body-main .page li.disabled{
+        cursor: not-allowed;
+    }
+    .panel-body-main .page li.disabled span {
+        color: #777;
+        border-color: #ddd!important;
+    }
+    .panel-body-main .page li.active {
+        cursor: default;
+        background: #00b7ee;
+    }
+    .panel-body-main .page li.active span {
+        color: #fff;
+    }
     .panel-body-main .page li a {
+        color: #00b7ee;
+    }
+    .panel-body-main .page li a:hover {
+        background: #eaeaea;
+        text-decoration: none;
+    }
+    .panel-body-main .page li a,
+    .panel-body-main .page li span {
         display: block;
-        padding: 2px 5px;
-        border: 1px solid #eaeaea;
+        padding: 6px 12px;
+        border: 1px solid #00b7ee;
         border-right: 1px solid transparent;
     }
-    .panel-body-main .page li:nth-last-of-type(1) a {
-        border-right: 1px solid #eaeaea;
+    .panel-body-main .page li:nth-last-of-type(1) a,
+    .panel-body-main .page li:nth-last-of-type(1) span {
+        border-right: 1px solid #00b7ee;
     }
 </style>
 
@@ -116,13 +148,16 @@
                     <ul class="info second-menu">
                         {notempty name="vo.child"}
                         {volist name="vo.child" id="lo"}
-                        <li class="second-item"><a href="//www.baidu.com">{$lo.name}</a></li>
+                        <li class="second-item"><a href="{:url('attachment_list',['parent_id'=>$lo.id])}">{$lo.name}</a></li>
                         {/volist}
                         {/notempty}
                     </ul>
                 </li>
                 {/volist}
                 {/notempty}
+            </ul>
+            <ul id="Huifold2" class="Huifold first-menu">
+                <li><a href="{:url('attachment_list')}">所有</a></li>
             </ul>
         </div>
         <div class="panel-body-main">
@@ -131,7 +166,16 @@
                 {volist name="data" id="vo"}
                 <div class="main-item">
                     <div class="img-box">
-                        <img src="//files2.wavlink.com/images/Product/English/UMD03/UMD03.png" alt="">
+                        {switch name="vo.ext"}
+                        {case zip|rar|7z|bin}
+                        <img src="//dev.iqs.link/icon/zip.png" alt="">
+                        {/case}
+                        {case mp4}
+                        <img src="//dev.iqs.link/icon/video.png" alt="">
+                        {/case}
+                        {default /}
+                        <img src="//dev.iqs.link/icon/files.png" alt="">
+                        {/switch}
                     </div>
                     <p title="{$vo.name}">{$vo.name}</p>
                 </div>

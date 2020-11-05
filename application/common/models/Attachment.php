@@ -39,10 +39,26 @@ class Attachment extends Base
     }
 
     /**
-     * @return Attachment[]|\think\Paginator
-     * @throws \think\exception\DbException
+     * @return string
      */
     public function getDataPage(){
-        return self::paginate(2);
+
+        try{
+            return self::paginate(12);
+        }catch (\Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
+    /**
+     * @param $parent_id int
+     * @return Attachment[]|string|\think\Paginator
+     */
+    public function getDataPageByPid($parent_id){
+        try{
+            return  self::where(['pid'=>$parent_id])->paginate(12);
+        }catch (\Exception $exception){
+            return $exception->getMessage();
+        }
     }
 }
