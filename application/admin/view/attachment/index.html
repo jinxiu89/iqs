@@ -130,7 +130,7 @@
             <a href="javascript:;" onclick="min_layer('添加分类','{:url(\'attachment_category\')}',window.parent)" class="btn btn-primary" >创建分类</a>
         </div>
         <div>
-            <button class="btn btn-success" disabled>用用</button>
+            <button class="apply btn disabled">应用</button>
             <button class="btn btn-danger" disabled>删除</button>
             <!--<form class="form form-horizontal" id="form-article-add">
 
@@ -168,15 +168,16 @@
                     <div class="img-box">
                         {switch name="vo.ext"}
                         {case zip|rar|7z|bin}
-                        <img src="//dev.iqs.link/icon/zip.png" alt="">
+                        <img src="//dev.iqs.link/icon/zip.png" alt="" data-url="{$vo.path}">
                         {/case}
                         {case mp4}
-                        <img src="//dev.iqs.link/icon/video.png" alt="">
+                        <img src="//dev.iqs.link/icon/video.png" alt="" data-url="{$vo.path}">
                         {/case}
                         {default /}
-                        <img src="//dev.iqs.link/icon/files.png" alt="">
+                        <img src="//dev.iqs.link/icon/files.png" alt="" data-url="{$vo.path}">
                         {/switch}
                     </div>
+
                     <p title="{$vo.name}">{$vo.name}</p>
                 </div>
                 {/volist}
@@ -258,6 +259,26 @@
         })}
     $(function(){
         $.Huifold("#Huifold1 .item h4","#Huifold1 .item .info","fast",3,"click"); /*5个参数顺序不可打乱，分别是：响应区,隐藏显示的内容,速度,类型,事件*/
+        $('.main-item').click(function (e){
+            e.stopPropagation();
+            var url = $(this).find('img').attr('data-url');
+            $(this).addClass('active');
+            $(this).siblings('.main-item').removeClass('active');
+            $('.apply').removeClass('disabled').addClass('btn-success').attr('data-url',url);
+
+
+        });
+        $(document).click(function (){
+            $('.main-item').removeClass('active');
+            $('.apply').removeClass('btn-success').addClass('disabled');
+        });
+        var index = parent.layer.getFrameIndex(window.name);
+        $('.apply').click(function (){
+            var url = $(this).attr('data-url');
+            // console.log(parent.$('.panel-body'));
+            window.sessionStorage.setItem('attachmentUrl', url)
+            parent.layer.close(index);
+        });
     });
 </script>
 {/block}

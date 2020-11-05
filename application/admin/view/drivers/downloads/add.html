@@ -20,20 +20,12 @@
             <input type="text" class="input-text" value="" placeholder="" id="requirement" name="requirement">
         </div>
     </div>
-    <!--<div class="row cl">
-        <label class="form-label col-xs-4 col-sm-2">文件：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <div class="uploader-thum-container">
-                <div id="fileList" class="uploader-list"></div>
-                <div id="filePicker">选择文件</div>
-                <button id="btn-star" type="button" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
-            </div>
-        </div>
-    </div>-->
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2">文件：</label>
-        <div class="formControls col-xs-8 col-sm-9">
-            <a href="javascript:;" onclick="mu_layer('附件管理器','{:url(\'attachment_list\')}',window.parent)" class="btn btn-primary radius ml-10">选择</a>
+        <div class="formControls col-xs-8 col-sm-9" id="select_file">
+            <a href="javascript:;" onclick="attachment_layer('附件管理器','{:url(\'attachment_list\')}',window.parent)" class="btn btn-primary radius ml-10">选择</a>
+            <input  type="hidden" name="path" value="">
+            <p></p>
         </div>
     </div>
 
