@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>{block name="title"}{/block}</title>
+    {block name="seo"}
+    <!--私有页面SEO-->
+    {/block}
+    <link rel="stylesheet" href="__STATIC__/lib/iconfont/iconfont.css">
+    <link rel="stylesheet" href="__STATIC__/css/public/components.css">
+    <script src="__STATIC__/lib/JQuery/JQuery-min.js"></script>
+    {block name="style"}
+    <!--私有样式文件-->
+    {/block}
+</head>
+<body>
+{block name="nav"}
+{include file="common/header" /}
+{/block}
+
+<section>
+    {block name="body"}
+    <!--主体内容-->
+    {/block}
+</section>
+
+{block name="footer"}
+{include file="common/footer" /}
+{/block}
+
+{block name="javascript"}
+<!--私有JS-->
+{/block}
+</body>
+</html>

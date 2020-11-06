@@ -1,10 +1,473 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{extend name="common/base" /}
+{block name="title"}iqsLink{/block}
+{block name="seo"}
+<meta name="description" content="iqsLink">
+<meta name="keywords" content="iqsLink">
+{/block}
+{block name="style"}
+<link rel="stylesheet" href="__STATIC__/css/page/support.css">
+<style>
+    .layui-layer-setwin {
+        top: 0!important;
+        right: 0!important;
+    }
+    .layui-layer-setwin .layui-layer-min {
+        display: none!important;
+    }
+    .layui-layer-setwin .layui-layer-max {
+        display: none!important;
+    }
+    .layui-layer-setwin .layui-layer-close1 {
+        top: -12px!important;
+        right: -12px!important;
+        width: 30px!important;
+        height: 30px!important;
+        background: #4A4A4A!important;
+        border-radius: 50%!important;
+    }
+    .layui-layer-setwin .layui-layer-close1:after {
+        content: 'X';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+    }
+</style>
+{/block}
 
-</body>
-</html>
+{block name="body"}
+<div class="common-width">
+    <div class="g-aside">
+        {include file='common/aside'}
+    </div>
+    <div class="g-main">
+        <div class="tips">
+            <p>Our WAVLINK product drivers are updated on a monthly basis to ensure that the drivers you download
+                from our official website are the latest drivers.</p>
+            <p>For the driver download, please select the corresponding product model through the search box or
+                product classification filter.</p>
+            <p><b>Please note:</b> When using a search box, only the product model is supported for searching. If
+                you do not know your product model, please click <a
+                        href="https://www.wavlink.com/en_us/faq/details/how_to_view_wavlink_product_model.html">here</a>.</p>
+            <p><b>Attention of Thunderbolt™ 3 product users: </b> Because Thunderbolt™ 3's product is aimed at
+                different computer model, their drive is different; And we cannot know the computer brand you use,
+                so the driver of Thunderbolt™ 3 products need you to go to your computer corresponding brand
+                official website to download the driver of Thunderbolt™ 3. We are deeply sorry for the inconvenience
+                brought to you. Here we have sorted out some of the major computer brands corresponding official
+                website download channels <a
+                        href="//files2.wavlink.com/drivers/PC-peripherals/Thunderbolt3_Driver_description.zip"
+                        title="">Download</a>, I hope it will be helpful to you. The current lightning drive
+                provided on our WAVLINK official website is only for the lightning port.</p>
+            <p>If you cannot find your product driver on WAVLINK's official website, please contact us: <a
+                    href="mailto:contact@wavlink.com">contact@wavlink.com</a>.</p>
+        </div>
+        <div class="filter-box">
+            <div class="type">
+                <h3>Wireless: </h3>
+                <div class="type-category">
+                    <ul>
+                        <li><a href="/en_us/drivers/086283309f3e.html">USB Adapter</a></li>
+                        <li><a href="/en_us/drivers/c7714e6549f8.html">PCI-E Adapter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="type">
+                <h3>PC peripherals: </h3>
+                <div class="type-category">
+                    <ul>
+                        <li><a href="/en_us/drivers/c1ba4ea08476.html">THUNDERBOLT™ 3</a></li>
+                        <li><a href="/en_us/drivers/61fbcd2953dc.html">USB DOCKING</a></li>
+                        <li><a href="/en_us/drivers/3dea44705bc1.html">USB DISPLAY</a></li>
+                        <li><a href="/en_us/drivers/94a1f7e73f81.html">USB HUB</a></li>
+                        <li><a href="/en_us/drivers/4a0dbd9b1cfd.html">NETWORK CARD</a></li>
+                        <li><a href="/en_us/drivers/95512e9f2e7c.html">USB STORAGE</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="Driver-box">
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>Wireless</span>
+                    <span>USB Adapter</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/7ba5c0ad5cca.html"
+                          data-title="WL-WN681A1-B" class="lay_driver">WL-WN681A1-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/476c584696c6.html"
+                          data-title="WL-WN681A1F-C" class="lay_driver">WL-WN681A1F-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/ecf5c158d5bf.html"
+                          data-title="WL-WN681A1-C" class="lay_driver">WL-WN681A1-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/cc71abe3ce21.html"
+                          data-title="WL-WN681A1-A" class="lay_driver">WL-WN681A1-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/6ab7804c3fb6.html"
+                          data-title="WL-WN681AE-C" class="lay_driver">WL-WN681AE-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/13cca37f003f.html"
+                          data-title="WL-WN681AEF-C" class="lay_driver">WL-WN681AEF-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/c904cc2e59ef.html"
+                          data-title="WL-WN681AE-B" class="lay_driver">WL-WN681AE-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/e59f28a0c174.html"
+                          data-title="WL-WN681AE-A" class="lay_driver">WL-WN681AE-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/510ece469ecc.html"
+                          data-title="WL-WN682A1-C" class="lay_driver">WL-WN682A1-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/361d49daa692.html"
+                          data-title="WL-WN682A1F-C" class="lay_driver">WL-WN682A1F-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/cae09cc3d224.html"
+                          data-title="WL-WN682A1-B" class="lay_driver">WL-WN682A1-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/aadb62663a83.html"
+                          data-title="WL-WN682A1-A" class="lay_driver">WL-WN682A1-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/bc32d68618c1.html"
+                          data-title="WL-WN691A1-C" class="lay_driver">WL-WN691A1-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/31a1d2e8ce49.html"
+                          data-title="WL-WN691A1F-C" class="lay_driver">WL-WN691A1F-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f7d29de6bf9b.html"
+                          data-title="WL-WN691A1-B" class="lay_driver">WL-WN691A1-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/e81c86b0a273.html"
+                          data-title="WL-WN691A1-A" class="lay_driver">WL-WN691A1-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/c7b0a32942e2.html"
+                          data-title="WL-WN691AE-C" class="lay_driver">WL-WN691AE-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/ca96323b9103.html"
+                          data-title="WL-WN691AEF-C" class="lay_driver">WL-WN691AEF-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/ae7a83fa452d.html"
+                          data-title="WL-WN691AE-B" class="lay_driver">WL-WN691AE-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/3c46765d1c65.html"
+                          data-title="WL-WN691AE-A" class="lay_driver">WL-WN691AE-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/54a45c166665.html"
+                          data-title="WL-WN688A3" class="lay_driver">WL-WN688A3</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/3d4a7a4b1b77.html"
+                          data-title="WL-WN688A2" class="lay_driver">WL-WN688A2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a7cb48c40229.html"
+                          data-title="WL-WN688U3-B" class="lay_driver">WL-WN688U3-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8f52b351f4d5.html"
+                          data-title="WL-WN688U3" class="lay_driver">WL-WN688U3</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8c7cd60f5425.html"
+                          data-title="WL-WN690A5D-A" class="lay_driver">WL-WN690A5D-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a3ee30c24b55.html"
+                          data-title="WL-WN683N1-D" class="lay_driver">WL-WN683N1-D</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/9abb5be7d0cc.html"
+                          data-title="WL-WN683N1-C" class="lay_driver">WL-WN683N1-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/559d0a02103e.html"
+                          data-title="WL-WN683N1-B" class="lay_driver">WL-WN683N1-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/2d4bf0c182d6.html"
+                          data-title="WL-WN683NA-D" class="lay_driver">WL-WN683NA-D</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a8344e6522d3.html"
+                          data-title="WL-WN683NA-C" class="lay_driver">WL-WN683NA-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/9c07bdd802d3.html"
+                          data-title="WL-WN683NA-B" class="lay_driver">WL-WN683NA-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/dc6b41964edd.html"
+                          data-title="WL-WN683N2P-C" class="lay_driver">WL-WN683N2P-C</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/e8efdf6f4a7e.html"
+                          data-title="WL-WN683N2P-B" class="lay_driver">WL-WN683N2P-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/7a68f8df9fff.html"
+                          data-title="WL-WN683N2P-A" class="lay_driver">WL-WN683N2P-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/5f8536a7ed5e.html"
+                          data-title="WL-WN687S1-G" class="lay_driver">WL-WN687S1-G</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/78285fcfe78f.html"
+                          data-title="WL-WN687S1-B" class="lay_driver">WL-WN687S1-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/cc6278583da7.html"
+                          data-title="WL-WN687C1-B" class="lay_driver">WL-WN687C1-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8afd1a36ad55.html"
+                          data-title="WL-WN687N1-B" class="lay_driver">WL-WN687N1-B</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f42ef48336cc.html"
+                          data-title="WL-WN687C1-A" class="lay_driver">WL-WN687C1-A</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>Wireless</span>
+                    <span>PCI-E Adapter</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/83c6105ffbb3.html"
+                          data-title="675X2" class="lay_driver">675X2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/92a61f345ec1.html"
+                          data-title="675X2M" class="lay_driver">675X2M</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/bbfc88039849.html"
+                          data-title="675QM" class="lay_driver">675QM</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/256abef84816.html"
+                          data-title="675Q2M" class="lay_driver">675Q2M</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>PC peripherals</span>
+                    <span>THUNDERBOLT™ 3</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/3801921e3942.html"
+                          data-title="WL-UTD04-A" class="lay_driver">WL-UTD04-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/46231ee26612.html"
+                          data-title="WL-UTD04H" class="lay_driver">WL-UTD04H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f4d09a08674e.html"
+                          data-title="Wl-UTD05-A" class="lay_driver">Wl-UTD05-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/5150b59f4aa4.html"
+                          data-title="WL-UTD05H" class="lay_driver">WL-UTD05H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8b9aee65801f.html"
+                          data-title="WL-UTD01-A" class="lay_driver">WL-UTD01-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/3d7288e9cae1.html"
+                          data-title="WL-UTD01H" class="lay_driver">WL-UTD01H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/aec4f282c0f4.html"
+                          data-title="WL-UTD03-A" class="lay_driver">WL-UTD03-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f03c870ae808.html"
+                          data-title="WL-UTD03H" class="lay_driver">WL-UTD03H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/267b84869966.html"
+                          data-title="WL-UTD21-A" class="lay_driver">WL-UTD21-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/2b9c4dfab3bd.html"
+                          data-title="WL-UTD21H" class="lay_driver">WL-UTD21H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/ac36738793b2.html"
+                          data-title="WL-UTD23-A" class="lay_driver">WL-UTD23-A</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/5b07a2678120.html"
+                          data-title="WL-UTD23H" class="lay_driver">WL-UTD23H</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>PC peripherals</span>
+                    <span>USB DOCKING</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f04e5e3e530a.html"
+                          data-title="WL-UMD01" class="lay_driver">WL-UMD01</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/c4d502f52d0e.html"
+                          data-title="WL-UMD02" class="lay_driver">WL-UMD02</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/b3c2a5039634.html"
+                          data-title="WL-UMD03" class="lay_driver">WL-UMD03</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a0aec1fa8de2.html"
+                          data-title="WL-UMD04" class="lay_driver">WL-UMD04</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/0c73d1e005a7.html"
+                          data-title="WL-UMD05" class="lay_driver">WL-UMD05</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/5865696d6b5e.html"
+                          data-title="WL-UMD06" class="lay_driver">WL-UMD06</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/4d44c139d388.html"
+                          data-title="WL-UMD12" class="lay_driver">WL-UMD12</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/2642bf221ed8.html"
+                          data-title="WL-UG69DK1" class="lay_driver">WL-UG69DK1</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a723e7e46180.html"
+                          data-title="WL-UG69DK2" class="lay_driver">WL-UG69DK2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/798f05f5f432.html"
+                          data-title="WL-UG69DK3" class="lay_driver">WL-UG69DK3</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/d2279e993285.html"
+                          data-title="WL-UG69DK4" class="lay_driver">WL-UG69DK4</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/bced86faf04c.html"
+                          data-title="WL-UG69DK5" class="lay_driver">WL-UG69DK5</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/82d6ec3d1a12.html"
+                          data-title="WL-UG69DK7" class="lay_driver">WL-UG69DK7</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/c6626a71a716.html"
+                          data-title="WL-UG69DK11" class="lay_driver">WL-UG69DK11</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/3b0b6ff3f2f7.html"
+                          data-title="WL-UG69PD1" class="lay_driver">WL-UG69PD1</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/7be5ccebd844.html"
+                          data-title="WL-UG69PD2" class="lay_driver">WL-UG69PD2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/523c4a315b1c.html"
+                          data-title="WL-UG69PD4" class="lay_driver">WL-UG69PD4</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/91f43d11fe97.html"
+                          data-title="WL-UG69PD5" class="lay_driver">WL-UG69PD5</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/45d0cb24ef49.html"
+                          data-title="WL-UG69PD9" class="lay_driver">WL-UG69PD9</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/52e2e5b48870.html"
+                          data-title="WL-UG69PD6" class="lay_driver">WL-UG69PD6</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/427518eb3fc0.html"
+                          data-title="WL-UG39DK1" class="lay_driver">WL-UG39DK1</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/efb191c4f114.html"
+                          data-title="WL-UG39DK4" class="lay_driver">WL-UG39DK4</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f861097e4ade.html"
+                          data-title="WL-UG39DK1V" class="lay_driver">WL-UG39DK1V</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/511c1223d553.html"
+                          data-title="WL-UG39DK4V" class="lay_driver">WL-UG39DK4V</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/4d31e255e277.html"
+                          data-title="WL-UG39DK2D" class="lay_driver">WL-UG39DK2D</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/9849676d6142.html"
+                          data-title="WL-UG39DK3" class="lay_driver">WL-UG39DK3</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8742ceae2c7d.html"
+                          data-title="WL-UG39DK5V" class="lay_driver">WL-UG39DK5V</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/aeb2810e1b72.html"
+                          data-title="WL-UG39DK6" class="lay_driver">WL-UG39DK6</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/965ec919fabf.html"
+                          data-title="WL-UG39DK7" class="lay_driver">WL-UG39DK7</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a90d4aff8ba1.html"
+                          data-title="WL-UG39DK8" class="lay_driver">WL-UG39DK8</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f42036b42637.html"
+                          data-title="WL-UG39DK9" class="lay_driver">WL-UG39DK9</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/517eded8dc4c.html"
+                          data-title="WL-UG39DK11" class="lay_driver">WL-UG39DK11</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/d4061760f2b4.html"
+                          data-title="WL-UG39DK12" class="lay_driver">WL-UG39DK12</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/7b914dba8baa.html"
+                          data-title="WL-UG39PD1" class="lay_driver">WL-UG39PD1</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/36ca9b2eadbc.html"
+                          data-title="WL-UG39PD5" class="lay_driver">WL-UG39PD5</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/65567029768d.html"
+                          data-title="WL-UG76PD2" class="lay_driver">WL-UG76PD2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/e8e868689d1e.html"
+                          data-title="WL-UHP3406" class="lay_driver">WL-UHP3406</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/703d3c01417c.html"
+                          data-title="WL-UHP3408" class="lay_driver">WL-UHP3408</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/15eebb3a68c1.html"
+                          data-title="WL-UHP3409" class="lay_driver">WL-UHP3409</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/c0957d3886ce.html"
+                          data-title="WL-UHP3D01G" class="lay_driver">WL-UHP3D01G</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a32531828473.html"
+                          data-title="WL-UHP3D02G" class="lay_driver">WL-UHP3D02G</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/992beb653dcf.html"
+                          data-title="WL-UG7601H" class="lay_driver">WL-UG7601H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/9ef23891fa81.html"
+                          data-title="WL-UG7602H" class="lay_driver">WL-UG7602H</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>PC peripherals</span>
+                    <span>USB DISPLAY</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/82fb18fbe367.html"
+                          data-title="WL-UG17D1" class="lay_driver">WL-UG17D1</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/d86b96656d6e.html"
+                          data-title="WL-UG19D1" class="lay_driver">WL-UG19D1</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a5ec2c6ddbbe.html"
+                          data-title="WL-UG17D4" class="lay_driver">WL-UG17D4</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/45d0f1c0ec0c.html"
+                          data-title="WL-UG35D8" class="lay_driver">WL-UG35D8</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/9acc41c18c80.html"
+                          data-title="WL-UG17V2" class="lay_driver">WL-UG17V2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/0d1312065cc1.html"
+                          data-title="WL-UG17V3" class="lay_driver">WL-UG17V3</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/06ec8cd4d5f5.html"
+                          data-title="WL-UG17V5" class="lay_driver">WL-UG17V5</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8f37714fbbc7.html"
+                          data-title="WL-UG17H2" class="lay_driver">WL-UG17H2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/eb75b5d078e7.html"
+                          data-title="WL-UG35D6" class="lay_driver">WL-UG35D6</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/add8d559f477.html"
+                          data-title="WL-UG3501D" class="lay_driver">WL-UG3501D</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f39e05186e9f.html"
+                          data-title="WL-UG3501H" class="lay_driver">WL-UG3501H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/14aacb3b7aac.html"
+                          data-title="WL-UG35H5" class="lay_driver">WL-UG35H5</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/b856b241702b.html"
+                          data-title="WL-UG35H7" class="lay_driver">WL-UG35H7</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/dd5265f40d72.html"
+                          data-title="WL-UG35DP5" class="lay_driver">WL-UG35DP5</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/aba5b9de7144.html"
+                          data-title="WL-UG5501DP" class="lay_driver">WL-UG5501DP</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f897c1ae8455.html"
+                          data-title="WL-UG5501H" class="lay_driver">WL-UG5501H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/1d30171bf853.html"
+                          data-title="WL-UG39DH1" class="lay_driver">WL-UG39DH1</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/1162c1737038.html"
+                          data-title="WL-UG39DH2" class="lay_driver">WL-UG39DH2</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8c28a04c2d14.html"
+                          data-title="WL-UG39DH3" class="lay_driver">WL-UG39DH3</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/cbdb2eb5dba6.html"
+                          data-title="WL-UG7601H" class="lay_driver">WL-UG7601H</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/8b8e44ddb254.html"
+                          data-title="WL-UG7602H" class="lay_driver">WL-UG7602H</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>PC peripherals</span>
+                    <span>USB HUB</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/e3daa4fe5c53.html"
+                          data-title="WL-UH3031G-E" class="lay_driver">WL-UH3031G-E</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/f6a27a299526.html"
+                          data-title="WL-UH3031G" class="lay_driver">WL-UH3031G</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/4aedcbee129a.html"
+                          data-title="WL-UH3031GC-E" class="lay_driver">WL-UH3031GC-E</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/5d710108ae9b.html"
+                          data-title="WL-UH3031GC1" class="lay_driver">WL-UH3031GC1</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>PC peripherals</span>
+                    <span>NETWORK CARD</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/1de51b6a02b7.html"
+                          data-title="WL-NWU326G" class="lay_driver">WL-NWU326G</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/6af2aeaba846.html"
+                          data-title="WL-NWU326GC" class="lay_driver">WL-NWU326GC</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/707875c2f190.html"
+                          data-title="WL-NWU328GC" class="lay_driver">WL-NWU328GC</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/9a6c08e37e5c.html"
+                          data-title="WL-NWU320G" class="lay_driver">WL-NWU320G</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/fad1322c5027.html"
+                          data-title="WL-NWU220G" class="lay_driver">WL-NWU220G</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/a6581ea3e029.html"
+                          data-title="WL-NWU225M" class="lay_driver">WL-NWU225M</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/484b08b20375.html"
+                          data-title="WL-CAU2N6" class="lay_driver">WL-CAU2N6</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/e70919254a77.html"
+                          data-title="WL-NWU330GC" class="lay_driver">WL-NWU330GC</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/d55c15f400cc.html"
+                          data-title="WL-NU78M41" class="lay_driver">WL-NU78M41</a></p>
+                </div>
+            </div>
+            <div class="item">
+                <h3>
+                    <span>home</span>
+                    <span>PC peripherals</span>
+                    <span>USB STORAGE</span>
+                </h3>
+                <div class="mode">
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/ab70e5f6ab23.html"
+                          data-title="WL-ST342U" class="lay_driver">WL-ST342U</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/bc064a7fcb07.html"
+                          data-title="WL-ST341U" class="lay_driver">WL-ST341U</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/fdd6daedfeae.html"
+                          data-title="WL-ST334U" class="lay_driver">WL-ST334U</a></p>
+                    <p><a href="javascript:;" data-url="/en_us/drivers/download/719b163dd968.html"
+                          data-title="WL-ST334UC" class="lay_driver">WL-ST334UC</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="javascript"}
+<!--私有JS-->
+<script type="text/javascript" src="__STATIC__/lib/layer/2.4/layer.js"></script>
+<script>
+    $(function () {
+        $('.drivers').addClass('active');
+        var windowWidth = $(window).width();
+        var w = windowWidth >= 768 ? '640px' : '96%',
+            h = windowWidth >= 768 ? '415px' : '300px';
+        // 驱动 layer 弹层
+        $('.lay_driver').click(function () {
+            var url = $(this).attr('data-url');
+            layer.open({
+                type: 2,
+                title: ['', 'background: #5190DF; height: 15px'],
+                maxmin: true,
+                shadeClose: true,
+                area: [w, h],
+                content: url
+            })
+        });
+        // 分类筛选处理
+        if (windowWidth >= 768) {
+            var filterW = $('.filter-box .type h3').add('.filter-box .search h3');
+            var max = 0;
+            filterW.each(function () {
+                max = max < $(this).outerWidth(true) ? $(this).outerWidth(true) : max;
+            });
+            $('.filter-box .type .type-category').add('.filter-box .search form').css({
+                paddingLeft: max
+            });
+        }
+    });
+</script>
+{/block}
