@@ -42,11 +42,11 @@
                 <tr class="text-c">
                     <td>{$vo.id}</td>
                     <td class="text-l">{$vo.title}</td>
-                    <td class="text-l">{$vo.keywords}</td>
+                    <td class="text-l">{$vo.description}</td>
                     <td class="text-l">
                         {notempty name="vo.files"}
                         {volist name="vo.files" id="lo"}
-                        <a href="" class="ml-5 btn btn-primary">{$lo.requirement}</a>
+                        <a href="javascript:;" onclick="add_or_edit('编辑下载文件','/wavlink/driver/{$vo.id}/{$lo.id}/download/edit.html')" class="ml-5 btn btn-primary">{$lo.requirement}</a>
                         {/volist}
                         {/notempty}
                     </td>
@@ -59,10 +59,6 @@
                         <a style="text-decoration:none" class="ml-5 btn btn-secondary"
                            onClick="add_or_edit('添加下载文件','/wavlink/driver/{$vo.id}/download/add.html')" href="javascript:void (0);"
                            title="添加下载文件"><i class="Hui-iconfont">&#xe61f;</i></a>
-<!--                        <a style="text-decoration:none" class="ml-5 btn btn-default"-->
-<!--                           onClick="add_or_edit('编辑下载文件','/wavlink/driver/{$vo.id}/download/edit.html')" href="javascript:void (0);"-->
-<!--                           title="编辑下载文件"><i class="Hui-iconfont">&#xe610;</i></a>-->
-
                     </td>
                 </tr>
                 {/volist}

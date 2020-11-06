@@ -14,7 +14,6 @@ use think\Request;
 use think\Route;
 use app\common\helper\Aws;
 use app\admin\controller\Base;
-
 /**
  * 编写思路：当前台点击操作按钮时，点击进入--指定操作
  * 例如进入 add操作后 先判断是 是get操作还是post操作
@@ -42,6 +41,21 @@ class Downloads extends Base
         if (Request()->isPost()) {
             $data = input('post.');
             return (new DriversFiles())->saveData($data);
+        }
+    }
+
+    public function edit($id,$file_id){
+        $model=new DriversFiles();
+        //这个是直接修改驱动文件模型表
+        if($this->request->isGet()){
+            $data=$model->getDataById($file_id)->toArray();
+            $this->assign('data',$data);
+            $this->assign('driver_id',$id);
+            return $this->fetch();
+        }
+        if($this->request->isPost()){
+            $data = input('post.');
+            return $model->saveData($data);
         }
     }
 

@@ -80,7 +80,11 @@ class DriversFiles extends Base
      */
     public static function getDataById($id)
     {
-        return self::get($id);
+        try{
+            return self::get($id);
+        }catch (\Exception $exception){
+            return $exception->getMessage();
+        }
     }
 
     /***
