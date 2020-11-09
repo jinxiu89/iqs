@@ -26,7 +26,6 @@ class Drivers extends Base
 
     public function index(){
         if($this->request->isGet()){
-            print_r($this->toLevel);
             $this->assign('category',$this->toLevel);
             return $this->fetch();
         }

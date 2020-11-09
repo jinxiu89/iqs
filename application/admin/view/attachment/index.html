@@ -23,10 +23,14 @@
     }
 
     .Huifold .item{ position:relative}
-    .Huifold .item:nth-of-type(1) .info {display: block}
+    .Huifold .item .active {display: block!important;}
     .Huifold .item h4{margin:0;font-weight:bold;position:relative;border-top: 1px solid #fff;font-size:15px;line-height:22px;padding:7px 10px;background-color:#eee;cursor:pointer;padding-right:30px}
     .Huifold .item h4 b{position:absolute;display: block; cursor:pointer;right:10px;top:7px;width:16px;height:16px; text-align:center; color:#666}
     .Huifold .item .info{display:none;padding:10px}
+    .Huifold .item a { color: #333; line-height: 20px; }
+    .Huifold .second-menu .active a { color: #0a6999; text-decoration: underline; }
+    .Huifold .second-menu .second-item .item-edit { display: none; }
+    .Huifold .second-menu .second-item:hover .item-edit { color: #0a6999; display: inline-block; text-decoration: none; }
 
     /* 主体容器 */
     .panel-body-main {
@@ -132,10 +136,7 @@
         <div>
             <button class="apply btn disabled">应用</button>
             <button class="btn btn-danger" disabled>删除</button>
-            <!--<form class="form form-horizontal" id="form-article-add">
-
-            </form>-->
-            <a href="javascript:void() ;" class="btn btn-primary" onclick="mu_layer('上传文件','{:url(\'attachment_upload\')}',window.parent)">上传</a>
+            <a href="javascript:void(0);" class="btn btn-primary" onclick="mu_layer('上传文件','{:url(\'attachment_upload\',[\'parent_id\'=>$id])}',window.parent)">上传</a>
         </div>
     </div>
     <div class="panel-body">
@@ -148,7 +149,10 @@
                     <ul class="info second-menu">
                         {notempty name="vo.child"}
                         {volist name="vo.child" id="lo"}
-                        <li class="second-item"><a href="{:url('attachment_list',['parent_id'=>$lo.id])}">{$lo.name}</a></li>
+                        <li class="second-item p{$lo.id}">
+                            <a class="item-link" href="{:url('attachment_list',['parent_id'=>$lo.id])}">{$lo.name}</a>
+                            <a class="item-edit" href="javascript:void(0) ;"  onclick="min_layer('编辑分类','{:url(\'attachment_edit_category\',[\'id\'=>$lo.id])}',window.parent)">&nbsp;&nbsp;<i class="Hui-iconfont">&#xe6df;</i></a>
+                        </li>
                         {/volist}
                         {/notempty}
                     </ul>
@@ -235,19 +239,19 @@
 
     //h-ui侧边栏插件js
     jQuery.Huifold = function(obj,obj_c,speed,obj_type,Event){
-        if(obj_type == 2){
+        if(obj_type === 2){
             $(obj+":first").find("b").html("-");
             $(obj_c+":first").show()}
         $(obj).bind(Event,function(){
             if($(this).next().is(":visible")){
-                if(obj_type == 2){
+                if(obj_type === 2){
                     return false}
                 else{
                     $(this).next().slideUp(speed).end().removeClass("selected");
                     $(this).find("b").html("+")}
             }
             else{
-                if(obj_type == 3){
+                if(obj_type === 3){
                     $(this).next().slideDown(speed).end().addClass("selected");
                     $(this).find("b").html("-")}else{
                     $(obj_c).slideUp(speed);
@@ -266,7 +270,6 @@
             $(this).siblings('.main-item').removeClass('active');
             $('.apply').removeClass('disabled').addClass('btn-success').attr('data-url',url);
 
-
         });
         $(document).click(function (){
             $('.main-item').removeClass('active');
@@ -275,10 +278,12 @@
         var index = parent.layer.getFrameIndex(window.name);
         $('.apply').click(function (){
             var url = $(this).attr('data-url');
-            // console.log(parent.$('.panel-body'));
             window.sessionStorage.setItem('attachmentUrl', url)
             parent.layer.close(index);
         });
+        var test='.p'+'{$id}';
+        $(test).addClass('active');
+        $(test).parent('.second-menu').addClass('active');
     });
 </script>
 {/block}

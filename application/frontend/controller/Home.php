@@ -16,7 +16,7 @@ class Home extends Base
 {
     public function index(){
         if($this->request->isGet()){
-            return $this->fetch();
+           return redirect(url('front_drivers'));
         }
     }
 }

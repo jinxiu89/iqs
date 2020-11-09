@@ -31,6 +31,23 @@ function show($status, $message = '', $url = '')
     return json_encode($res);
 }
 
+function DriverCategoryName($id)
+{
+    $category = (new DriverCategory())->getCategoryName($id);
+    if($category){
+        if($category['parent_id'] == 0){
+            return "一级分类";
+        }else{
+            $parent=(new DriverCategory())->getDataById($category['parent_id']);
+            return $parent['name'];
+        }
+
+        return $category['parent_id'] == 0 ? "一级分类" : $category['name'];
+    }else{
+        return "程序错误";
+    }
+}
+
 function getCategoryName($id)
 {
     $category = (new DriverCategory())->getCategoryName($id);
@@ -89,4 +106,5 @@ function getFilesize($num)
     $num /= pow(1024, $p);
     return number_format($num, 3) . ' ' . $format;
 }
+
 

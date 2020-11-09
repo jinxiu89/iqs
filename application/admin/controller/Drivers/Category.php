@@ -67,6 +67,7 @@ class Category extends Base
         }
         if (Request()->isPost()) {
             $data = input('post.');
+            if($data['id'] == $data['parent_id']) return  show(false, '父分类不能选择自己本身', $this->url);
             return (new DriverCategory())->saveData($data);
         }
     }

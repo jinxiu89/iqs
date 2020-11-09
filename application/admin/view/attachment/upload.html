@@ -16,13 +16,6 @@
                 <button id="btn-star" type="button" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
             </div>
         </div>
-        <div class="row clearfix">
-            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-                <button class="btn btn-secondary radius add" type="button"><i class="Hui-iconfont">&#xe632;</i>
-                    确定
-                </button>
-            </div>
-        </div>
     </div>
 </form>
 {/block}
@@ -40,7 +33,8 @@
             auto: false,
             swf: '__LIB__/webuploader/0.1.5/Uploader.swf',
             // 文件接收服务端。
-            server: '/wavlink/image/uploader.html',
+            // server: '/wavlink/image/uploader.html',
+            server: '{:url(\'attachment_upload\',[\'parent_id\'=>$id])}',
             // 选择文件的按钮。可选。
             // 内部根据当前运行是创建，可能是input元素，也可能是flash.
             pick: {

@@ -35,10 +35,15 @@ Route::group('wavlink', function () {
     Route::post('/image/uploader', 'Common/ImageUpload');
 
     Route::get('/attachment/list','Attachment/index')->parent(['parent_id'=>'\d+'])->name('attachment_list');
-    Route::get('/attachment/upload','Attachment/upload')->name('attachment_upload');
+
+    Route::get('/attachment/upload','Attachment/upload')->name('attachment_upload')->parent(['parent_id'=>'\d+']);
+    Route::post('/attachment/upload','Attachment/upload')->name('attachment_upload')->parent(['parent_id'=>'\d+']);
+
     Route::get('/attachment/category/add','AttachmentCategory/add')->name('attachment_category');
     Route::post('/attachment/category/add','AttachmentCategory/add')->name('attachment_category');
-//    Route::get('/attachment/category/add','AttachmentCategory/add');
+
+    Route::get('/attachment/category/edit','AttachmentCategory/edit')->name('attachment_edit_category')->parent(['id'=>'\d+']);
+    Route::post('/attachment/category/edit','AttachmentCategory/edit')->name('attachment_edit_category')->parent(['id'=>'\d+']);
 
 })->prefix('admin/');
 
