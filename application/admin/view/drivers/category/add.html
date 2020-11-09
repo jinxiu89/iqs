@@ -10,10 +10,10 @@
             <div class="form-controls col-xs-8 col-sm-9">
                 <span class="select-box">
                     <select name="parent_id" class="select">
-                        {notempty name="to_level"}
+                        {notempty name="category"}
                         <option value="0">根分类</option>
-                        {volist name="to_level" id="vo"}
-                        <option value="{$vo.id}">{$vo.delimiter|raw}{$vo.name}</option>
+                        {volist name="category" id="vo"}
+                        <option value="{$vo.id}">{$vo.name}</option>
                         {/volist}
                         {else /}
                         <option value="0">根分类</option>

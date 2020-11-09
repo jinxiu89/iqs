@@ -40,6 +40,15 @@ class DriverCategory extends Base
 
     }
 
+    public function getParentCategory(){
+        try{
+            return self::where(['parent_id'=>0])->order("parent_id")->all();
+
+        }catch (\Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
     public function getDateByDefault($page,$listRow){
         $data = (new FilesModel())->getAllData($page, $listRow);
         $count = (new FilesModel())->getCount();

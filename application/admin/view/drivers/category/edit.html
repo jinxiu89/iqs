@@ -10,13 +10,13 @@
             <div class="form-controls col-xs-8 col-sm-9">
                 <span class="select-box">
                     <select name="parent_id" class="select">
-                        {notempty name="to_level"}
+                        {notempty name="category"}
                         {if ($data.parent_id == 0)}<option value="0" selected="selected">一级分类</option>{/if}
-                        {volist name="to_level" id="vo"}
-                        <option value="{$vo.id}" {if condition="$vo.id == $data.parent_id"} selected="selected" {/if}>{$vo.delimiter|raw}{$vo.name}</option>
+                        {volist name="category" id="vo"}
+                        <option value="{$vo.id}" {if condition="$vo.id == $data.parent_id"} selected="selected" {/if}>{$vo.name}</option>
                         {/volist}
                         {else /}
-                        <!--<option value="0">根分类</option>-->
+                        <option value="0">根分类</option>
                         {/notempty}
                 </select>
                 </span>

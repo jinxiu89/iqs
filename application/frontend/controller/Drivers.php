@@ -10,13 +10,25 @@
  **/
 
 namespace app\frontend\controller;
-
+use app\common\helper\Category as CategoryHelper;
+use app\common\models\DriverCategory;
 
 class Drivers extends Base
 {
+    protected $toLevel;
+    public function initialize()
+    {
+        parent::initialize();
+        $category = (new DriverCategory())->getCategory()->toArray();
+        $this->toLevel = CategoryHelper::toLayer($category, 'child', 0);
+
+    }
+
     public function index(){
         if($this->request->isGet()){
-            return "hello world";
+            print_r($this->toLevel);
+            $this->assign('category',$this->toLevel);
+            return $this->fetch();
         }
     }
 }

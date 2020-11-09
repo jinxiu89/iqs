@@ -9,6 +9,7 @@
 namespace app\admin\controller\Drivers;
 
 
+use think\App;
 use think\Request;
 use app\common\models\DriverCategory;
 use app\common\helper\Category as CategoryHelper;
@@ -20,7 +21,12 @@ use app\admin\controller\Base;
  */
 class Category extends Base
 {
-    protected $toLevel;
+    protected $parentCategory;
+    public function __construct(App $app = null)
+    {
+        parent::__construct($app);
+        $this->parentCategory=(new DriverCategory())->getParentCategory()->toArray();
+    }
 
     public function index()
     {
@@ -35,13 +41,13 @@ class Category extends Base
     public function add()
     {
         if (Request()->isGet()) {
-
             return $this->fetch('', [
-                'to_level' => $this->toLevel,
+                'category' => $this->parentCategory,
             ]);
         }
         if (Request()->isPost()) {
             $data = input('post.');
+            $data['url_title']=substr(md5(uniqid()), 3, 12);
             return (new DriverCategory())->saveData($data);
         }
     }
@@ -53,7 +59,7 @@ class Category extends Base
             if ($data) {
                 return $this->fetch('', [
                     'data' => $data,
-                    'to_level' => $this->toLevel
+                    'category' => $this->parentCategory
                 ]);
             } else {
                 return "数据库错误";
