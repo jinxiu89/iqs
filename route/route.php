@@ -14,3 +14,5 @@ use think\facade\Route;
 // 生成验证码
 Route::rule('/verify/code$', 'base/Common/verify', 'GET')->name('gen_verify');
 Route::get('/$','frontend/Home/index')->name('front_index');
+Route::get('/drivers$','frontend/Drivers/index')->name('front_drivers');
+Route::get('/manuals$','frontend/Manuals/index')->name('front_manuals');
