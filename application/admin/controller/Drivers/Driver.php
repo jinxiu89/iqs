@@ -52,6 +52,7 @@ class Driver extends Base
         }
         if (Request()->isPost()) {
             $data = input('post.');
+            $data['url_title']=substr(md5(uniqid()), 3, 12);
             return (new DriversModel())->saveData($data);
         }
     }
@@ -65,6 +66,7 @@ class Driver extends Base
         }
         if(Request()->isPost()){
             $data= input('post.');
+            $data['url_title']=substr(md5(uniqid()), 3, 12);
             return (new DriversModel())->saveData($data);
         }
     }

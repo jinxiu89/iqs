@@ -40,16 +40,18 @@ class DriverCategory extends Base
 
     }
 
-    public function getParentCategory(){
-        try{
-            return self::where(['parent_id'=>0])->order("parent_id")->all();
+    public function getParentCategory()
+    {
+        try {
+            return self::where(['parent_id' => 0])->order("parent_id")->all();
 
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return $exception->getMessage();
         }
     }
 
-    public function getDateByDefault($page,$listRow){
+    public function getDateByDefault($page, $listRow)
+    {
         $data = (new FilesModel())->getAllData($page, $listRow);
         $count = (new FilesModel())->getCount();
         $pageCount = NULL;
@@ -74,7 +76,7 @@ class DriverCategory extends Base
     {
         //如果这个分类有下一级的话要把他下一级的数据弄出来
         //这个分类ID自己
-        $cat = self::where(['parent_id' => $c_id])->whereOr(['id'=>$c_id])->select()->toArray();
+        $cat = self::where(['parent_id' => $c_id])->whereOr(['id' => $c_id])->select()->toArray();
         $id = [];
         foreach ($cat as $item) {
             $id[] = $item['id'];
@@ -82,7 +84,7 @@ class DriverCategory extends Base
         //计算总页数的方法
         $offset = ($page - 1) == 0 ? 0 : ($page - 1) * $listRow;
         $query = new FilesModel();
-        $data = $query->with('Downloads')->where('c_id','in',$id)->limit($offset,$listRow)->select()->toArray();//
+        $data = $query->with('Downloads')->where('c_id', 'in', $id)->limit($offset, $listRow)->select()->toArray();//
         $count = count($data);
         //总共多少页？
         $pageCount = NULL;
@@ -161,5 +163,10 @@ class DriverCategory extends Base
     {
         $data = $this->getCategory();
 
+    }
+
+    public function getDataWithDriver()
+    {
+        return self::with('drivers')->where('parent_id','>',0)->select();
     }
 }

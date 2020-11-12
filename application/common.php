@@ -48,6 +48,11 @@ function DriverCategoryName($id)
     }
 }
 
+function getParentName($parent_id){
+    $data=(new DriverCategory())->getDataById($parent_id);
+    return $data->name;
+}
+
 function getCategoryName($id)
 {
     $category = (new DriverCategory())->getCategoryName($id);

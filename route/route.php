@@ -15,4 +15,6 @@ use think\facade\Route;
 Route::rule('/verify/code$', 'base/Common/verify', 'GET')->name('gen_verify');
 Route::get('/$','frontend/Home/index')->name('front_index');
 Route::get('/drivers$','frontend/Drivers/index')->name('front_drivers');
+Route::get('/drivers/:url_title','frontend/Drivers/details')->name('front_drivers_details')->parent(['url_title'=>'[a-zA-Z0-9]+']);
+
 Route::get('/manuals$','frontend/Manuals/index')->name('front_manuals');

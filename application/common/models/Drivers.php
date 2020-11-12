@@ -100,6 +100,14 @@ class Drivers extends Base
             return $exception->getMessage();
         }
     }
+    public function getDataWithFiles($url_title){
+        try{
+            $data=self::where(['url_title'=>$url_title])->with('files')->find();
+            return $data->toArray();
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
 
     /**
      * @param $data

@@ -12,7 +12,7 @@
 namespace app\frontend\controller;
 use app\common\helper\Category as CategoryHelper;
 use app\common\models\DriverCategory;
-
+use app\common\models\Drivers as DriverModel;
 class Drivers extends Base
 {
     protected $toLevel;
@@ -27,7 +27,18 @@ class Drivers extends Base
     public function index(){
         if($this->request->isGet()){
             $this->assign('category',$this->toLevel);
+            $data=(new DriverCategory())->getDataWithDriver();
+            $this->assign('data',$data);
             return $this->fetch();
         }
+    }
+    public function details($url_title){
+        if($this->request->isGet()){
+            $data=(new DriverModel())->getDataWithFiles($url_title);
+            if(is_string($data)) $this->error('参数不正确');
+            $this->assign('data',$data);
+            return $this->fetch();
+        }
+        $this->error('非法访问');
     }
 }
