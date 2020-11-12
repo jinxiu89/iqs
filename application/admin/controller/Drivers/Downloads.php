@@ -58,6 +58,14 @@ class Downloads extends Base
             return $model->saveData($data);
         }
     }
+    public function delete_download(){
+        if($this->request->isPost()){
+            $postData=input('post.');
+            $result=(new DriversFiles())->deleteById($postData['id']);
+            if(is_string($result)) return show(0,$result);
+            return show(true,"删除成功");
+        }
+    }
 
     /***
      * @param $id
@@ -84,7 +92,7 @@ class Downloads extends Base
      * @param $id
      * @return false|mixed|string
      */
-    public function edit_download($id)
+   /* public function edit_download($id)
     {
         if (Request()->isGet()) {
             $data = (new DownloadModel())->getDataById($id);
@@ -107,7 +115,8 @@ class Downloads extends Base
                 }
             }
         }
-    }
+    }*/
+
 
     /***
      * 删除控制器
@@ -115,11 +124,11 @@ class Downloads extends Base
      * @param $id
      * @return false|string
      */
-    public function del($id)
+    /*public function del($id)
     {
         if (Request()->isPost()) {
             $data = input('post.');
             return (new DownloadModel())->deleteById($data['id']);
         }
-    }
+    }*/
 }

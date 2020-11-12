@@ -12,19 +12,22 @@
         <div class="form-controls col-xs-8 col-sm-4">
             <input type="text" class="input-text" value="{$driver_id|getProductName}" disabled>
             <input type="hidden" value="{$driver_id}" name="driver_id">
+            <input type="hidden" value="{$data.id}" name="id" id="id">
         </div>
     </div>
     <div class="row clearfix">
         <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>系统要求：</label>
         <div class="form-controls col-xs-8 col-sm-4">
-            <input type="text" class="input-text" value="{$data.requirement}" placeholder="" id="requirement" name="requirement">
+            <input type="text" class="input-text" value="{$data.requirement}" placeholder="" id="requirement"
+                   name="requirement">
         </div>
     </div>
     <div class="row cl">
         <label class="form-label col-xs-4 col-sm-2">文件：</label>
         <div class="formControls col-xs-8 col-sm-9" id="select_file">
-            <a href="javascript:;" onclick="attachment_layer('附件管理器','{:url(\'attachment_list\')}',window.parent)" class="btn btn-primary radius ml-10">选择</a>
-            <input  type="hidden" name="path" value="{$data.path}">
+            <a href="javascript:;" onclick="attachment_layer('附件管理器','{:url(\'attachment_list\')}',window.parent)"
+               class="btn btn-primary radius ml-10">选择</a>
+            <input type="hidden" name="path" value="{$data.path}">
             <p>{$data.path}</p>
         </div>
     </div>
@@ -33,6 +36,9 @@
         <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
             <button class="btn btn-secondary radius add" type="button"><i class="Hui-iconfont">&#xe632;</i>
                 保存
+            </button>
+            <button class="btn btn-danger radius delete" type="button"><i class="Hui-iconfont">&#xe6e2;</i>
+                删除
             </button>
         </div>
     </div>
@@ -44,7 +50,7 @@
 <script type="text/javascript" src="__LIB__/laypage/1.2/laypage.js"></script>
 <script type="text/javascript" src="__ADMIN__/business/js/main.js"></script>
 <script type="text/javascript">
-        $(".add").click(function () {
+    $(".add").click(function () {
         var postData = {};
         var data = $("form").serializeArray();
         $.each(data, function () {
@@ -59,6 +65,25 @@
                 if (msgData.status === true) {
                     layer.msg(msgData.message, {icon: 1, time: 1000}, function () {
                         window.parent.location.href = msgData.url
+                    })
+                } else {
+                    layer.msg(msgData.message, {icon: 5, time: 2000})
+                }
+            }
+        }, JSON);
+    });
+    $(".delete").click(function () {
+        var postData = {};
+        postData['id'] = $("#id").val();
+        $.ajax({
+            url: '{:url(\'driver_delete\')}',
+            data: postData,
+            type: "post",
+            "success": function (result) {
+                var msgData = JSON.parse(result);
+                if (msgData.status === true) {
+                    layer.msg(msgData.message, {icon: 1, time: 1000}, function () {
+                        // window.parent.location.href = msgData.url
                     })
                 } else {
                     layer.msg(msgData.message, {icon: 5, time: 2000})

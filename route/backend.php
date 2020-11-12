@@ -30,8 +30,12 @@ Route::group('wavlink', function () {
     Route::post('/driver/edit/:id', 'Drivers.driver/edit')->parent(['id' => '\d+']);
     Route::get('/driver/:id/download/add', 'Drivers.downloads/add')->parent(['id' => '\d+']);
     Route::post('/driver/:id/download/add', 'Drivers.downloads/add')->parent(['id' => '\d+']);
+    Route::post('/driver/download/delete$', 'Drivers.downloads/delete_download')->name('driver_delete'); //删除下载项
+
     Route::get('/driver/:id/:file_id/download/edit', 'Drivers.downloads/edit')->parent(['id' => '\d+','file_id'=>'\d+']);
     Route::post('/driver/:id/:file_id/download/edit', 'Drivers.downloads/edit')->parent(['id' => '\d+','file_id'=>'\d+']);
+
+
     Route::post('/image/uploader', 'Common/ImageUpload');
 
     Route::get('/attachment/list','Attachment/index')->parent(['parent_id'=>'\d+'])->name('attachment_list');
@@ -60,9 +64,9 @@ Route::group('wavlink', function () {
     Route::post('/category/add', 'Drivers.category/add');
     Route::post('/category/edit/:id', 'Drivers.category/edit')->parent(['id' => '\d+']);
     Route::post('/files/add', 'files/add');
-    Route::post('/files/download/edit/:id', 'downloads/edit_download')->parent(['id' => '\d+']);
-    Route::post('/files/download/del/:id','downloads/del')->parent(['id' => '\d+']);
+//    Route::post('/files/download/edit/:id', 'downloads/edit_download')->parent(['id' => '\d+']);
+//    Route::post('/files/download/del/:id','downloads/del')->parent(['id' => '\d+']);
 
-    Route::post('/files/edit/:id', 'files/edit')->parent(['id' => '\d+']);
+//    Route::post('/files/edit/:id', 'files/edit')->parent(['id' => '\d+']);
 
 })->prefix('admin/');

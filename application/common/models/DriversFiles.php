@@ -95,14 +95,11 @@ class DriversFiles extends Base
      */
     public function deleteById($id)
     {
-        $data=self::get($id);
+//        $data=self::get($id);
         try {
-            if(Aws::deleteKey($data['aws_key'])){
-                return $data->delete() ? show(true, $this->success="删除成功！", $this->url) : show(false, $this->failed="删除失败！", '');
-            }
-            return show(false,$this->failed="aws那边没删除好",'');
+            return self::destroy($id);
         } catch (Exception $exception){
-            return show(false,$exception->getMessage(),'');
+            return show(false,$exception->getMessage());
         }
     }
 }
