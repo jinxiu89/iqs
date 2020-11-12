@@ -10,6 +10,7 @@ namespace app\common\helper;
  * @格言： 我的内心因看见大海而波涛汹涌
  **/
 use app\common\storage\Aws;
+use think\Exception;
 
 /**
  * Class Uploader
@@ -28,7 +29,6 @@ class Uploader {
      * @return array|string
      */
     public static function imageUpload($fileInfo,$type){
-        //todo:: 单图上传
         if(!is_array($fileInfo)) return '非法上传请求';
         $info=[];
         try{
@@ -48,6 +48,25 @@ class Uploader {
             return $exception->getMessage();
         }
         return $info;
+    }
+
+    /**
+     * @param $key
+     * @param $type
+     * @return string
+     */
+    public static function delete($key,$type){
+        try{
+            switch ($type){
+                case 0:
+                    return Aws::deleteKey($key);
+                case 1:
+                    //todo::阿里云
+                    break;
+            }
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
     }
 
     /**

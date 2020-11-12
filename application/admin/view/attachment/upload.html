@@ -45,6 +45,7 @@
             resize: false,
             method: 'POST',
             fileNumLimit: 1,
+            timeout:0,
             // 只允许选择图片文件。
             accept: {
                 title: 'Files',
@@ -114,6 +115,10 @@
                 $btn.text('开始上传');
             }
         });
+
+        // uploader.on('error', function (err) {
+        //     console.log('1231')
+        // })
 
         $btn.on('click', function () {
             if ('uploading' === state) {

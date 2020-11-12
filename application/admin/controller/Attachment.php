@@ -62,6 +62,21 @@ class Attachment extends Base
             return $this->fetch();
         }
     }
+    public function delete(){
+        if($this->request->isPost()){
+            $model=(new AttachmentModel());
+            $postData=input('post.');
+            $data = $model->getDataById($postData['id']);
+            $delRes=$model->deleteById($postData['id']);
+            if(is_string($delRes)) return show(0,$delRes);
+            $deleteCloud=Uploader::delete($data['name'],0);
+            if(is_string($deleteCloud)) return show(0,$deleteCloud);
+            if($deleteCloud == true){
+                return show(1,"删除成功");
+            }
+            return show(0,"删除失败");
+        }
+    }
 
     /**
      * @param $parent_id
@@ -75,14 +90,15 @@ class Attachment extends Base
             return $this->fetch();
         }
         if($this->request->isPost()){
-            $info=[];
             $file = $this->request->file('file');
             $info['filePath']=$file->getInfo('tmp_name');
             $info['key']=$file->getInfo('name');
+            $temp=(new AttachmentModel())->getDataByName($info['key']);
+            if(is_array($temp) and !empty($temp)) return $temp['path'];
             $result = Uploader::imageUpload($info,0);
             if(is_string($result)) return "错误:".$result;
             unset($info);
-            if (is_array($result)) { // todo ::存储附件数据
+            if (is_array($result)) {
                 $attachment['pid']=$parent_id !=NULL ? $parent_id : 1;
                 $attachment['name']=$file->getInfo('name');
                 $attachment['size']=getFilesize($file->getInfo('size'));
@@ -90,8 +106,8 @@ class Attachment extends Base
                 $attachment['type']=$file->getInfo('type');
                 $attachment['upload_type']=$result['upload_type'];
                 $attachment['module_type']=1;
-                $res=(new \app\common\models\Attachment())->add($attachment);
-                if(is_string($res)) return $res;
+                $res=(new AttachmentModel())->add($attachment);//todo:: 保存表失败还要删除文件
+                if(is_string($res)) return false;
                 return $attachment['path'];
             }
             return "未知错误";

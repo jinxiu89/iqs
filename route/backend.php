@@ -38,6 +38,7 @@ Route::group('wavlink', function () {
 
     Route::get('/attachment/upload','Attachment/upload')->name('attachment_upload')->parent(['parent_id'=>'\d+']);
     Route::post('/attachment/upload','Attachment/upload')->name('attachment_upload')->parent(['parent_id'=>'\d+']);
+    Route::post('/attachment/delete','Attachment/delete')->name('attachment_delete');
 
     Route::get('/attachment/category/add','AttachmentCategory/add')->name('attachment_category');
     Route::post('/attachment/category/add','AttachmentCategory/add')->name('attachment_category');

@@ -26,13 +26,52 @@ class Attachment extends Base
 
     /**
      * @param $info array
-     * @return bool|string
+     * @return array|string
      */
     public function add($info)
     {
         if(!is_array($info)) return __CLASS__.__FUNCTION__.'参数不合法';
         try{
-            return self::allowField(true)->save($info);
+            $result=self::allowField(true)->save($info);
+            return ['url'=>$result];
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
+    /**
+     * @param $id
+     * @return bool|string
+     */
+    public function deleteById($id){
+        try{
+            return self::destroy($id);
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
+    /**
+     * @param $name
+     * @return array|string
+     */
+    public function getDataByName($name){
+        try{
+            $data=self::where(['name'=>$name])->findOrEmpty();
+            return  $data->toArray();
+        }catch (Exception $exception){
+            return $exception->getMessage();
+        }
+    }
+
+    /**
+     * @param $id
+     * @return array|string
+     */
+    public function getDataById($id){
+        try{
+            $data=self::where(['id'=>$id])->findOrEmpty();
+            return $data->toArray();
         }catch (Exception $exception){
             return $exception->getMessage();
         }
