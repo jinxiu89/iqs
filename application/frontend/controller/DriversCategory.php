@@ -37,8 +37,9 @@ class DriversCategory extends Base
     public function category($url_title){
         if($this->request->isGet()){
             $this->assign('category',$this->toLevel);
-            $data=(new DriverCategory())->getDataByUrlTtile($url_title)->toArray();
+            $data=(new DriverCategory())->getDataByUrlTtile($url_title);
             $this->assign('data',$data);
+            $this->assign('title',$url_title);
             return $this->fetch();
         }
     }

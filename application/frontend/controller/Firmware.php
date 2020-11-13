@@ -12,7 +12,7 @@
 namespace app\frontend\controller;
 
 
-class Manuals extends Base
+class Firmware extends Base
 {
     public function index(){
         if($this->request->isGet()){

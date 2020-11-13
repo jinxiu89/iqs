@@ -19,3 +19,4 @@ Route::get('/drivers/category/:url_title$','frontend/DriversCategory/category')-
 Route::get('/drivers/:url_title','frontend/Drivers/details')->name('front_drivers_details')->parent(['url_title'=>'[a-zA-Z0-9]+']);
 
 Route::get('/manuals$','frontend/Manuals/index')->name('front_manuals');
+Route::get('/firmware$','frontend/Firmware/index')->name('front_firmware');
