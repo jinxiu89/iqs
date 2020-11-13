@@ -77,51 +77,51 @@
         white-space:nowrap;
     }
     /* 分页 */
-    .panel-body-main .page {
+    .g-page {
         margin-top: 20px;
     }
-    .panel-body-main .page ul:before,
-    .panel-body-main .page ul:after {
+    .g-page ul:before,
+    .g-page ul:after {
         content: "";
         display: table;
         zoom: 1;
     }
-    .panel-body-main .page ul:after {
+    .g-page ul:after {
         clear: both;
     }
-    .panel-body-main .page li {
+    .g-page li {
         float: left;
     }
-    .panel-body-main .page li.disabled{
+    .g-page li.disabled{
         cursor: not-allowed;
     }
-    .panel-body-main .page li.disabled span {
+    .g-page li.disabled span {
         color: #777;
         border-color: #ddd!important;
     }
-    .panel-body-main .page li.active {
+    .g-page li.active {
         cursor: default;
         background: #00b7ee;
     }
-    .panel-body-main .page li.active span {
+    .g-page li.active span {
         color: #fff;
     }
-    .panel-body-main .page li a {
+    .g-page li a {
         color: #00b7ee;
     }
-    .panel-body-main .page li a:hover {
+    .g-page li a:hover {
         background: #eaeaea;
         text-decoration: none;
     }
-    .panel-body-main .page li a,
-    .panel-body-main .page li span {
+    .g-page li a,
+    .g-page li span {
         display: block;
         padding: 6px 12px;
         border: 1px solid #00b7ee;
         border-right: 1px solid transparent;
     }
-    .panel-body-main .page li:nth-last-of-type(1) a,
-    .panel-body-main .page li:nth-last-of-type(1) span {
+    .g-page li:nth-last-of-type(1) a,
+    .g-page li:nth-last-of-type(1) span {
         border-right: 1px solid #00b7ee;
     }
 </style>
@@ -188,7 +188,7 @@
                 {/notempty}
             </div>
 
-            <div class="page">
+            <div class="g-page">
                 {notempty name="page"}
                 {$page|raw}
                 {/notempty}

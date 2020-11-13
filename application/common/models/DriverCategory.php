@@ -165,8 +165,28 @@ class DriverCategory extends Base
 
     }
 
+    /**
+     * @return DriverCategory[]
+     * 前台获取数据 并关联 驱动列表
+     */
     public function getDataWithDriver()
     {
-        return self::with('drivers')->where('parent_id','>',0)->select();
+        try{
+            return self::with('drivers')->where('parent_id','>',0)->select();
+        }catch (Exception $exception){
+            return  $exception->getMessage();
+        }
+    }
+
+    /**
+     * @param $url_title
+     * @return DriverCategory[]|string
+     */
+    public function getDataByUrlTtile($url_title){
+        try{
+            return self::with('drivers')->where(['url_title'=>$url_title])->select();
+        }catch (\Exception $exception){
+            return $exception->getMessage();
+        }
     }
 }

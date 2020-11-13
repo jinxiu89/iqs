@@ -34,9 +34,11 @@ class Driver extends Base
     {
         $data = (new DriversModel())->getDrivers();
         $count = $data->count();
+        $page = $data->render();
         return $this->fetch('',[
             'data' => $data,
-            'count' => $count
+            'count' => $count,
+            'page' =>$page
         ]);
     }
 

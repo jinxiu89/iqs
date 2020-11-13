@@ -2,6 +2,56 @@
 {block name="seo"}
 <!--/meta 作为公共模版分离出去-->
 <title>驱动列表</title>
+<style>
+    /* 分页 */
+    .g-page {
+        margin-top: 20px;
+    }
+    .g-page ul:before,
+    .g-page ul:after {
+        content: "";
+        display: table;
+        zoom: 1;
+    }
+    .g-page ul:after {
+        clear: both;
+    }
+    .g-page li {
+        float: left;
+    }
+    .g-page li.disabled{
+        cursor: not-allowed;
+    }
+    .g-page li.disabled span {
+        color: #777;
+        border-color: #ddd!important;
+    }
+    .g-page li.active {
+        cursor: default;
+        background: #00b7ee;
+    }
+    .g-page li.active span {
+        color: #fff;
+    }
+    .g-page li a {
+        color: #00b7ee;
+    }
+    .g-page li a:hover {
+        background: #eaeaea;
+        text-decoration: none;
+    }
+    .g-page li a,
+    .g-page li span {
+        display: block;
+        padding: 6px 12px;
+        border: 1px solid #00b7ee;
+        border-right: 1px solid transparent;
+    }
+    .g-page li:nth-last-of-type(1) a,
+    .g-page li:nth-last-of-type(1) span {
+        border-right: 1px solid #00b7ee;
+    }
+</style>
 {/block}
 {block name="nav"}
 <nav class="breadcrumb" style="background-color:#fff;padding: 0 24px">
@@ -67,7 +117,9 @@
                 </tbody>
             </table>
         </div>
-        <div id="laypage" class="text-c"></div>
+        <div id="laypage" class="text-c g-page">
+            {$page|raw}
+        </div>
     </div>
 </div>
 {/block}
