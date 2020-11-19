@@ -1,0 +1,295 @@
+//@name: components.less
+//@description: 公共模块css
+//@author: Alan(alan_webdeveloper@163.com)
+//@update: 2019-09-10 16:30
+
+@import "mixins";
+@import "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//基礎樣式重置
+body, ul, ol, dl, dd, h1, h2, h3, h4, h5, h6, figure, form, fieldset, legend, input, textarea, button, p, blockquote, th, td, pre, xmp {
+  margin: 0;
+  padding: 0
+}
+
+h1, h2, h3, h4, h5, h6, b, strong {
+  font-weight: normal
+}
+
+ul, li, ol {
+  list-style: none;
+}
+
+input, button {
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+input::-webkit-input-placeholder {
+   //WebKit browsers
+  color: #ccc;
+}
+
+input:-moz-placeholder {
+   //Mozilla Firefox 4 to 18
+  color: #ccc;
+}
+
+input::-moz-placeholder {
+   //Mozilla Firefox 19+
+  color: #ccc;
+}
+
+input:-ms-input-placeholder {
+   //Internet Explorer 10+
+  color: #ccc;
+}
+
+a {
+  color: #25a4bb;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: Neo_Sans;
+  src: url("../../lib/font/Neo_Sans.ttf");
+}
+
+html {
+  overflow-x: hidden;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: Neo_Sans, "Microsoft YaHei", Helvetica, "Meiryo UI", "Malgun Gothic", "Segoe UI", "Trebuchet MS", "Monaco", monospace, Tahoma, STXihei, "华文细黑", STHeiti, "Helvetica Neue", "Droid Sans", "wenquanyi micro hei", FreeSans, Arimo, Arial, SimSun, "宋体", Heiti, "黑体", sans-serif;;
+  font-size: 14px;
+  background: @bodyBgColor;
+  transition: all .3S;
+  line-height: 1.42857143;
+}
+
+//重新定义bootstrap容器宽度
+.common-width {
+  .clearFix();
+  margin: auto;
+  @media screen and (min-width: 1200px) {
+    width: 83.333%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 100%;
+    padding: 0 10px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+// 頁頭
+.g-header {
+  margin-bottom: 10px;
+
+  .bg-box {
+    width: 100%;
+    background: #42A4FF;
+
+    img {
+      .img-responsive();
+      .center-block()
+    }
+  }
+}
+
+// 頁頭
+
+// 頁腳
+.g-foot {
+  margin-top: 50px;
+
+  .foot-box {
+    padding: 50px 0;
+    line-height: 26px;
+    background: @baseColor;
+
+    dl {
+      .fl();
+      width: 30%;
+      padding-right: 20px;
+
+      &:nth-of-type(1) {
+        margin-left: 20%;
+      }
+    }
+
+    dl dt {
+      color: @whiteColor;
+      font-size: 16px;
+    }
+
+    dl dd {
+      color: @whiteSmoke;
+    }
+
+    dl dd span,
+    dl dd span a {
+      color: #25a4bb;
+    }
+    dl dd a:hover {
+      color: #25a4bb + 50;
+    }
+  }
+
+  .copy-right {
+    padding: 5px 0;
+    font-size: 12px;
+    text-align: center;
+    color: @whiteSmoke;
+    background: @blackColor;
+  }
+}
+
+//頁腳
+
+//側邊導航aside
+.support-aside {
+  .fl();
+  width: 22%;
+  padding-right: 10px;
+
+  ul {
+    background: @whiteColor;
+  }
+
+  ul li {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+    border-bottom: 1px solid @borderColor;
+  }
+
+  ul li h3 {
+    margin: 0 -10px;
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 60px;
+    background: @activeColor;
+    color: #fff;
+    text-transform: capitalize;
+  }
+
+  ul li a {
+    .clearFix();
+    display: block;
+    font-size: 16px;
+    color: @baseColor;
+    text-transform: capitalize;
+
+    &:hover span {
+      color: @activeColor;
+      text-decoration: underline;
+    }
+  }
+
+  ul li.active span {
+    color: @activeColor;
+    text-decoration: underline;
+  }
+
+  ul li a .iconfont {
+    .fl();
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 40px;
+    color: @activeColor;
+  }
+
+  ul li a span {
+    .fl();
+    padding-left: 20px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    width: 30%;
+  }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    width: 25%;
+  }
+}
+
+.g-main {
+  .fl();
+  width: 78%;
+  background: none;
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    width: 70%;
+  }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    width: 75%;
+  }
+}
+
+//側邊導航aside結束
+
+// 手机端样式
+@media screen and (max-width: 767px) {
+  .g-header {
+    margin-bottom: 5px;
+  }
+
+  .support-aside {
+    width: 100%;
+    padding: 0;
+
+    ul li {
+      height: 50px;
+      line-height: 50px;
+    }
+
+    ul li h3 {
+      font-size: 14px;
+      line-height: 50px;
+    }
+
+    ul li a .iconfont {
+      height: 50px;
+      line-height: 50px;
+      font-size: 30px;
+    }
+  }
+
+  .g-main {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .g-foot {
+    .foot-box {
+      padding: 50px 10px;
+    }
+
+    .foot-box dl {
+      width: 100%;
+      margin-bottom: 20px;
+
+      &:nth-of-type(1) {
+        margin-left: 0;
+      }
+
+      &:nth-last-of-type(1) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// 手机端样式
