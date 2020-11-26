@@ -11,6 +11,7 @@ namespace app\common\models;
 
 use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
+use think\Exception;
 use think\exception\DbException;
 use think\facade\Config;
 
@@ -18,7 +19,7 @@ use think\facade\Config;
  * Class manager
  * @package app\common\models
  */
-class manager extends Base
+class Manager extends Base
 {
     protected $table = "tb_manager";
 
@@ -29,20 +30,24 @@ class manager extends Base
             "status" => 1,
         );
         try {
-            $user = self::where($map)->find()->toArray();
+            $obj = self::where($map)->findOrEmpty();
+            $user = $obj->toArray();
+            if ($user['password'] != md5($data['password'] . Config::get('app.user_secret') . $user['code'])) {
+                return show(false, '密码不正确', '');
+            }
             session("adminUser", $user, 'admin');
             return show(true, '登录成功！', $url);
-            /*if ($user['password'] != md5($data['password']) . Config::get('app.user_secret')) {
-//                return show(false, '密码不正确', '');
-            } else {
+        } catch (Exception $e) {
+            return show(false, $e->getMessage(), '');
+        }
+    }
 
-            }*/
-        } catch (DataNotFoundException $e) {
-            return show(false, $e->getMessage(), '');
-        } catch (ModelNotFoundException $e) {
-            return show(false, $e->getMessage(), '');
-        } catch (DbException $e) {
-            return show(false, $e->getMessage(), '');
+    public function modify($data)
+    {
+        try {
+            return self::save($data, ['id' => $data['id']]);
+        } catch (\Exception $exception) {
+            return $exception->getMessage();
         }
     }
 }

@@ -49,9 +49,8 @@ Route::group('wavlink', function () {
 
     Route::get('/attachment/category/edit','AttachmentCategory/edit')->name('attachment_edit_category')->parent(['id'=>'\d+']);
     Route::post('/attachment/category/edit','AttachmentCategory/edit')->name('attachment_edit_category')->parent(['id'=>'\d+']);
-
 })->prefix('admin/');
-
+//Route::post('/manager/modify','admin/Manager/modify'); 零时用了一下 后期追溯删除
 
 /***
  * 所有的post 都放在post组里
