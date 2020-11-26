@@ -63,9 +63,4 @@ Route::group('wavlink', function () {
     Route::post('/category/add', 'Drivers.category/add');
     Route::post('/category/edit/:id', 'Drivers.category/edit')->parent(['id' => '\d+']);
     Route::post('/files/add', 'files/add');
-//    Route::post('/files/download/edit/:id', 'downloads/edit_download')->parent(['id' => '\d+']);
-//    Route::post('/files/download/del/:id','downloads/del')->parent(['id' => '\d+']);
-
-//    Route::post('/files/edit/:id', 'files/edit')->parent(['id' => '\d+']);
-
 })->prefix('admin/');
