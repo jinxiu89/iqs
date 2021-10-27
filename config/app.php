@@ -150,20 +150,31 @@ return [
         "debug" => false
 
     ],
+    //    'aws_app_key' => [
+    //        'key' => "AKIA5QZ524X3GXDISWXI",
+    //        'secret' => "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",//Access key ID
+
+    //dd 
+    //    ],
+    // 'aws_app_key' => [
+    //     'key' => "AKIA5QZ524X3KTNJBOO3",
+    //     'secret' => "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", //Access key ID
+    // ],
     'aws_app_key' => [
-        'key' => "AKIA5QZ524X3GXDISWXI",
-        'secret' => "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",//Access key ID
+        'key' => "AKIA5QZ524X3D3D547UY",
+        'secret' => "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", //Access key ID
     ],
-    'aws_bucket'=>'files.iqs.link',
-    'aws_key_prefix'=>[
+
+    'aws_bucket' => 'files.iqs.link',
+    'aws_key_prefix' => [
         'dw' => 'drivers',
         'fw' => 'firmwares',
         'ma' => 'manuals'
     ],
-    'api_secret'=>[
-        'key'=>'iqslink',
-        'secret'=>'aGVsbG8gd29ybGQgd2F2bGluaw==',
-    ],//
-    'user_secret'=>'aGVsbG8gd29ybGQgd2F2bGluaw==',
+    'api_secret' => [
+        'key' => 'iqslink',
+        'secret' => 'aGVsbG8gd29ybGQgd2F2bGluaw==',
+    ], //
+    'user_secret' => 'aGVsbG8gd29ybGQgd2F2bGluaw==',
 
 ];

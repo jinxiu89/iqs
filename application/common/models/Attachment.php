@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @Create by PhpStorm
  * @author:jinxiu89@163.com
@@ -22,7 +23,7 @@ class Attachment extends Base
     protected $table = 'tb_attachment';
     protected $success = "保存成功！";
     protected $failed = "保存失败！";
-//    protected $url = '/wavlink/category/list.html'
+    //    protected $url = '/wavlink/category/list.html'
 
     /**
      * @param $info array
@@ -30,11 +31,11 @@ class Attachment extends Base
      */
     public function add($info)
     {
-        if(!is_array($info)) return __CLASS__.__FUNCTION__.'参数不合法';
-        try{
-            $result=self::allowField(true)->save($info);
-            return ['url'=>$result];
-        }catch (Exception $exception){
+        if (!is_array($info)) return __CLASS__ . __FUNCTION__ . '参数不合法';
+        try {
+            $result = self::allowField(true)->save($info);
+            return ['url' => $result];
+        } catch (Exception $exception) {
             return $exception->getMessage();
         }
     }
@@ -43,10 +44,11 @@ class Attachment extends Base
      * @param $id
      * @return bool|string
      */
-    public function deleteById($id){
-        try{
+    public function deleteById($id)
+    {
+        try {
             return self::destroy($id);
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return $exception->getMessage();
         }
     }
@@ -55,11 +57,12 @@ class Attachment extends Base
      * @param $name
      * @return array|string
      */
-    public function getDataByName($name){
-        try{
-            $data=self::where(['name'=>$name])->findOrEmpty();
+    public function getDataByName($name)
+    {
+        try {
+            $data = self::where(['name' => $name])->findOrEmpty();
             return  $data->toArray();
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return $exception->getMessage();
         }
     }
@@ -68,11 +71,12 @@ class Attachment extends Base
      * @param $id
      * @return array|string
      */
-    public function getDataById($id){
-        try{
-            $data=self::where(['id'=>$id])->findOrEmpty();
+    public function getDataById($id)
+    {
+        try {
+            $data = self::where(['id' => $id])->findOrEmpty();
             return $data->toArray();
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return $exception->getMessage();
         }
     }
@@ -80,11 +84,12 @@ class Attachment extends Base
     /**
      * @return string
      */
-    public function getDataPage(){
+    public function getDataPage()
+    {
 
-        try{
+        try {
             return self::paginate(12);
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return $exception->getMessage();
         }
     }
@@ -93,10 +98,11 @@ class Attachment extends Base
      * @param $parent_id int
      * @return Attachment[]|string|\think\Paginator
      */
-    public function getDataPageByPid($parent_id){
-        try{
-            return  self::where(['pid'=>$parent_id])->paginate(12);
-        }catch (\Exception $exception){
+    public function getDataPageByPid($parent_id)
+    {
+        try {
+            return  self::where(['pid' => $parent_id])->paginate(12);
+        } catch (\Exception $exception) {
             return $exception->getMessage();
         }
     }

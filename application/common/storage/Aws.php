@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: admin
@@ -10,6 +11,7 @@ namespace app\common\storage;
 
 use Aws\Exception\AwsException;
 use Aws\Exception\MultipartUploadException;
+use Aws\S3\ObjectUploader;
 use Aws\S3\S3Client;
 use Aws\S3\MultipartUploader;
 use think\facade\Config;
@@ -49,16 +51,18 @@ class Aws
      * @param string $prefix
      * @return array|string
      */
-    public static function lists($prefix){
-        $option=[
-            'Bucket'=>Config::get('app.aws_bucket'),
-            'Prefix'=>$prefix,
+    public static function lists($prefix)
+    {
+        $option = [
+            'Bucket' => Config::get('app.aws_bucket'),
+            'Prefix' => $prefix,
+            'ACL' => 'public-read'
         ];
-        try{
-            $obj=self::createClient()->listObjectsV2((array) $option)->toArray();
+        try {
+            $obj = self::createClient()->listObjectsV2((array)$option)->toArray();
             unset($obj['Contents'][0]);
-            return $obj['Contents'] ;
-        }catch (AwsException $exception){
+            return $obj['Contents'];
+        } catch (AwsException $exception) {
             return $exception->getMessage();
         }
     }
@@ -73,28 +77,29 @@ class Aws
      * API参考 连接  MultipartUploader
      * https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html
      *
-     * @return mixed|void
+     * @return array|string
      */
     public static function uploader($info)
     {
-        $source=$info['filePath'];
-        $obj = new MultipartUploader(self::createClient(), $source, [
-            "bucket" => Config::get('app.aws_bucket'),
-            "key" => $info['key'],
-        ]);
-        try{
+        $source = fopen($info['filePath'], 'rb');
+        $obj = new ObjectUploader(
+            self::createClient(),
+            Config::get('app.aws_bucket'),
+            $info['key'],
+            $source
+        );
+        try {
             do {
                 try {
-                    $result = $obj->upload()->get('Key');
+                    $result = $obj->upload();
+                    if ($result["@metadata"]["statusCode"] == '200') return ['path' => 'http://' . Config::get('app.aws_bucket') . '/' . $info['key'], 'upload_type' => 1];
+                    // return $result;
                 } catch (MultipartUploadException $exception) {
                     rewind($source);
-                    $obj = new MultipartUploader(self::createClient(), $source, [
-                        'state' => $exception->getState(),
-                    ]);
+                    $obj = new MultipartUploader(self::createClient(), $source, ['state' => $exception->getState(),]);
                 }
             } while (!isset($result));
-            return ['path'=>'http://'.Config::get('app.aws_bucket').'/'.$result,'upload_type'=>1];
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return $exception->getMessage();
         }
     }
@@ -116,10 +121,10 @@ class Aws
         $client = self::createClient();
         try {
             $client->getObjectUrl($Bucket, $key); //有url
-            try{
+            try {
                 $client->deleteObject(['Bucket' => $Bucket, 'Key' => $key,]);
                 return true; //删除成功
-            }catch (AwsException $exception){
+            } catch (AwsException $exception) {
                 return false; //删除失败！
             }
         } catch (AwsException $exception) {
